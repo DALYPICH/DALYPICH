@@ -119,6 +119,15 @@ nav a:hover {
   font-style: italic;
 }
 
+.compliance-point {
+  color: #2980b9;
+  font-size: 12px;
+  padding: 2px 0 4px 70px;
+  line-height: 1.5;
+  font-style: italic;
+  font-weight: 600;
+}
+
 .checklist-item.new-content {
   border-left: 4px solid #e74c3c;
   background-color: #fdf2f2;

@@ -14,6 +14,7 @@ const checklistItemSchema = new mongoose.Schema({
   total: { type: Number, default: 1 },
   legalReference: { type: String, default: '' },
   isNewContent: { type: Boolean, default: false },
+  compliancePoint: { type: String, default: '' },
 }, { timestamps: true });
 
 module.exports = mongoose.model('ChecklistItem', checklistItemSchema);

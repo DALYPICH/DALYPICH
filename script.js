@@ -70,6 +70,9 @@ async function loadChecklist() {
           const legalHtml = item.legalReference
             ? `<div class="legal-reference">${item.legalReference}</div>`
             : '';
+          const complianceHtml = item.compliancePoint
+            ? `<div class="compliance-point">${item.compliancePoint}</div>`
+            : '';
           const newBadge = item.isNewContent
             ? '<span class="new-badge">NEW - ILO Reference</span>'
             : '';
@@ -84,6 +87,7 @@ async function loadChecklist() {
               </div>
             </div>
             ${legalHtml}
+            ${complianceHtml}
           </div>`;
         });
         html += '</div>';

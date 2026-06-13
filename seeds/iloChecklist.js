@@ -541,6 +541,28 @@ const iloQuestions = [
     completed: 1,
     total: 1,
   },
+  {
+    section: 'ILO',
+    sectionNumber: '2',
+    subsection: 'Discrimination',
+    subsectionNumber: '2.4',
+    category: 'Gender',
+    categoryNumber: '2.4.3',
+    questionNumber: '2.4.3.11',
+    question: 'Has the employer terminated workers who are pregnant or forced them to resign?',
+    progress: 0, completed: 0, total: 1, isNewContent: true,
+  },
+  {
+    section: 'ILO',
+    sectionNumber: '2',
+    subsection: 'Discrimination',
+    subsectionNumber: '2.4',
+    category: 'Gender',
+    categoryNumber: '2.4.3',
+    questionNumber: '2.4.3.12',
+    question: 'Has the employer terminated workers who are on maternity leave or forced them to resign?',
+    progress: 0, completed: 0, total: 1, isNewContent: true,
+  },
 
   // 2.4.4 Other Grounds
   {
@@ -3461,6 +3483,8 @@ const legalReferences = {
   '2.4.3.8': 'Labour Law Art. 182: Pregnancy testing or contraceptive use as a condition of employment is prohibited.',
   '2.4.3.9': 'Labour Law Art. 182: Maternity leave must be included in workers\' period of continuous service.',
   '2.4.3.10': 'Labour Law Art. 46: A woman shall not lose her job, wages, benefits, or seniority because of pregnancy or maternity leave.',
+  '2.4.3.11': 'Labour Law Art. 46, 182: Terminating or forcing resignation of pregnant workers is prohibited. No dismissal during pregnancy.',
+  '2.4.3.12': 'Labour Law Art. 46, 182: Terminating or forcing resignation of workers on maternity leave is prohibited.',
 
   // 2.4.4 - Other Grounds (HIV/AIDS, Disability)
   '2.4.4.1': 'Labour Law Art. 12: HIV/AIDS status must not be a factor in hiring decisions. ILO Recommendation 200.',
@@ -3693,10 +3717,69 @@ const legalReferences = {
   '2.10.2.5': 'Labour Law Art. 184: Breastfeeding: 1 hour paid time off per day during working hours for 1 year after birth.',
 };
 
-// Apply legal references to questions
+// Official ILO Better Work CAT Compliance Points mapped by questionNumber
+const compliancePoints = {
+  // Process Integrity
+  '2.1.1.2': 'CAT #8: The assessor\'s access to the enterprise was unreasonably restricted.',
+  '2.1.1.3': 'CAT #7: Documents were not provided in a timely manner.',
+  '2.1.1.8': 'CAT #4: Significant concerns about process integrity.',
+  '2.1.1.9': 'CAT #6: Other issues of concern: Building safety; Machine safety; Environmental issues; Voiced by workers.',
+
+  // Learning
+  '2.2.1': 'CAT #10: Management did not consult with elected worker representatives, including trade unions (if present) in determining the training to be offered to workers and their representatives.',
+
+  // Child Labour
+  '2.3.1.1': 'CAT #11*: EAs found workers under the age of 15.',
+  '2.3.2.1': 'CAT #12: Workers who are under age 18 performed work that is hazardous by nature.',
+  '2.3.2.2': 'CAT #13: Workers who are under age 18 worked at night, or worked more than 8 hours per day (including overtime).',
+  '2.3.2.3': 'CAT #14: The employer subjected workers under age 18 to the unconditional worst forms of child labour.',
+  '2.3.3.1': 'CAT #15: The employer did not reliably verify the age of workers prior to hiring.',
+  '2.3.3.2': 'CAT #16: The employer did not keep a register and got consent from the guardians of workers under 18 years of age.',
+
+  // Discrimination - Race and Origin
+  '2.4.1.1': 'CAT #17*1: The recruitment materials such as job announcements or job application forms referred to the applicant\'s race, colour or origin.',
+  '2.4.1.2': 'CAT #18*1: The applicant\'s race, colour or origin was a factor in hiring decisions.',
+  '2.4.1.3': 'CAT #19*1: The race, colour or origin was a factor in decisions regarding conditions of work.',
+  '2.4.1.4': 'CAT #20*1: The race, colour or origin was a factor in decisions regarding pay.',
+  '2.4.1.5': 'CAT #21*1: The race, colour or origin was a factor in decisions regarding opportunities for promotion or access to training.',
+  '2.4.1.6': 'CAT #22*1: There was harassment of workers on the basis of race, colour or origin.',
+  '2.4.1.7': 'CAT #23*1: The race, colour or origin was a factor in the employer\'s decisions regarding termination or retirement of workers.',
+
+  // Discrimination - Religion and Political Opinion
+  '2.4.2.1': 'CAT #24*1: The recruitment materials such as job announcements or job application forms referred to the applicant\'s religion or political opinion.',
+  '2.4.2.2': 'CAT #25*1: An applicant\'s religion or political opinion was a factor in hiring decisions.',
+  '2.4.2.3': 'CAT #26*1: The religion or political opinion was a factor in decisions regarding conditions of work.',
+  '2.4.2.4': 'CAT #27*1: The religion or political opinion was a factor in decisions regarding pay.',
+  '2.4.2.5': 'CAT #28*1: The religion or political opinion was a factor in decisions regarding opportunities for promotion or access to training.',
+  '2.4.2.6': 'CAT #29*1: There was harassment of workers on the basis of religion or political opinion.',
+  '2.4.2.7': 'CAT #30*1: The religion or political opinion was a factor in the employer\'s decisions regarding termination or retirement of workers.',
+
+  // Discrimination - Gender
+  '2.4.3.1': 'CAT #37*1: The job announcements referred to the applicant\'s gender.',
+  '2.4.3.2': 'CAT #38*1: The applicant\'s gender was a factor in hiring decisions.',
+  '2.4.3.3': 'CAT #39*1: The gender was a factor in decisions regarding conditions of work.',
+  '2.4.3.4': 'CAT #40*: The gender was a factor in decisions regarding pay.',
+  '2.4.3.5': 'CAT #41*1: The gender was a factor in decisions regarding opportunities for promotion or access to training.',
+  '2.4.3.6': 'CAT #42*1: The gender was a factor in the employer\'s decisions regarding termination or retirement of workers.',
+  '2.4.3.7': 'CAT #34*: Workers were subjected to sexual harassment.',
+  '2.4.3.8': 'CAT #32: The employer required pregnancy tests or the use of contraceptives as a condition of employment.',
+  '2.4.3.9': 'CAT #31: The maternity leave was excluded from workers\' period of continuous service.',
+  '2.4.3.10': 'CAT #33: The employer changed the employment status, position, wages, benefits or seniority of workers during maternity leave.',
+  '2.4.3.11': 'CAT #35*: The employer terminated workers who are pregnant or forced them to resign.',
+  '2.4.3.12': 'CAT #36*: The employer terminated workers who are on maternity leave or forced them to resign.',
+
+  // Discrimination - Other Grounds (HIV/AIDS, Disability)
+  '2.4.4.8': 'CAT #43: Disabled persons who apply for work were evaluated according to their ability to perform the job.',
+  '2.4.4.9': 'CAT #44: The employer had not taken steps to reasonably accommodate physically disabled persons.',
+};
+
+// Apply legal references and compliance points to questions
 iloQuestions.forEach(q => {
   if (legalReferences[q.questionNumber]) {
     q.legalReference = legalReferences[q.questionNumber];
+  }
+  if (compliancePoints[q.questionNumber]) {
+    q.compliancePoint = compliancePoints[q.questionNumber];
   }
 });
 
