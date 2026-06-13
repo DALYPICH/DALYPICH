@@ -33,7 +33,8 @@
       "Bash(node seeds/iloChecklist.js)",
       "Bash(node apply-comprehensive-advice.js)",
       "Bash(node enrich-seed-data.js)",
-      "Bash(node add-advice-to-db.js)"
+      "Bash(node add-advice-to-db.js)",
+      "Bash(git commit *)"
     ]
   }
 }
