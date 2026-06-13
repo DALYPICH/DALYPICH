@@ -5,7 +5,32 @@
       "PowerShell(npm --version)",
       "PowerShell(python --version)",
       "PowerShell(nvm version)",
-      "PowerShell($env:PATH += \";C:\\\\Program Files\\\\GitHub CLI\"; gh --version)"
+      "PowerShell($env:PATH += \";C:\\\\Program Files\\\\GitHub CLI\"; gh --version)",
+      "PowerShell(git -C \"D:\\\\DALY_Project\\\\New Project\" status)",
+      "PowerShell(Start-Process powershell -Verb RunAs -ArgumentList \"-Command\", \"Start-Service MongoDB\" -Wait)",
+      "PowerShell(New-Item -ItemType Directory -Force -Path \"D:\\\\DALY_Project\\\\mongo_data\" | Out-Null; Start-Sleep 3; try { $tcp = New-Object System.Net.Sockets.TcpClient; $tcp.Connect\\(\"127.0.0.1\", 27017\\); \"MongoDB is listening on port 27017\"; $tcp.Close\\(\\) } catch { \"MongoDB not yet listening: $_\" })",
+      "PowerShell(Get-ChildItem \"HKLM:\\\\SOFTWARE\\\\Microsoft\\\\VisualStudio\\\\14.0\\\\VC\\\\Runtimes\" -ErrorAction SilentlyContinue | ForEach-Object { $_.PSChildName + \" \" + \\(Get-ItemProperty $_.PsPath\\).Version })",
+      "PowerShell($ErrorActionPreference = 'SilentlyContinue'; [System.Environment]::Is64BitOperatingSystem; [System.Environment]::OSVersion.Version.ToString\\(\\); \\(Get-CimInstance Win32_Processor\\).Name)",
+      "PowerShell($mongod = Get-ChildItem \"C:\\\\Program Files\\\\MongoDB\" -Recurse -Filter \"mongod.exe\" -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty FullName; $mongod; & $mongod --version)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(n\\\\\"\")",
+      "Bash(powershell -Command \"\\(Get-Content 'D:\\\\DALY_Project\\\\New Project\\\\seeds\\\\iloChecklist.js' | Select-Object -Last 30\\) -join \\\\\"`n\\\\\"\")",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "WebSearch",
+      "WebFetch(domain:betterwork.org)",
+      "WebFetch(domain:prake.org)",
+      "WebFetch(domain:wageindicator.org)",
+      "WebFetch(domain:cambodia.acclime.com)",
+      "WebFetch(domain:emerhub.com)",
+      "WebFetch(domain:portal.betterwork.org)",
+      "Bash(node -c seeds/iloChecklist.js)",
+      "Bash(node -e ' *)",
+      "WebFetch(domain:transparency.betterfactories.org)",
+      "Bash(node update-audit-findings.js)",
+      "Bash(git checkout *)",
+      "Bash(node add-audit-findings.js)",
+      "Bash(node seeds/iloChecklist.js)"
     ]
   }
 }

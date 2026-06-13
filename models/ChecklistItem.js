@@ -15,6 +15,11 @@ const checklistItemSchema = new mongoose.Schema({
   legalReference: { type: String, default: '' },
   isNewContent: { type: Boolean, default: false },
   compliancePoint: { type: String, default: '' },
+  auditFindings: { type: String, default: '' },
+  commonProblems: { type: String, default: '' },
+  advice: { type: String, default: '' },
+  reminder: { type: String, default: '' },
+  relatedCAT: { type: [String], default: [] },
 }, { timestamps: true });
 
 module.exports = mongoose.model('ChecklistItem', checklistItemSchema);

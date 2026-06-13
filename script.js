@@ -73,6 +73,18 @@ async function loadChecklist() {
           const complianceHtml = item.compliancePoint
             ? `<div class="compliance-point">${item.compliancePoint}</div>`
             : '';
+          const auditHtml = item.auditFindings
+            ? `<div class="audit-findings"><div class="audit-findings-label">🔍 Audit Finding:</div>${item.auditFindings}</div>`
+            : '';
+          const commonProblemsHtml = item.commonProblems
+            ? `<div class="common-problems"><strong>Common Problems:</strong> ${item.commonProblems}</div>`
+            : '';
+          const adviceHtml = item.advice
+            ? `<div class="advice"><div class="advice-label">💡 Advice:</div>${item.advice}</div>`
+            : '';
+          const reminderHtml = item.reminder
+            ? `<div class="reminder">${item.reminder}</div>`
+            : '';
           const newBadge = item.isNewContent
             ? '<span class="new-badge">NEW - ILO Reference</span>'
             : '';
@@ -88,6 +100,10 @@ async function loadChecklist() {
             </div>
             ${legalHtml}
             ${complianceHtml}
+            ${auditHtml}
+            ${commonProblemsHtml}
+            ${adviceHtml}
+            ${reminderHtml}
           </div>`;
         });
         html += '</div>';
