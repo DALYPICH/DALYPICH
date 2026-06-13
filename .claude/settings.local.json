@@ -30,7 +30,10 @@
       "Bash(node update-audit-findings.js)",
       "Bash(git checkout *)",
       "Bash(node add-audit-findings.js)",
-      "Bash(node seeds/iloChecklist.js)"
+      "Bash(node seeds/iloChecklist.js)",
+      "Bash(node apply-comprehensive-advice.js)",
+      "Bash(node enrich-seed-data.js)",
+      "Bash(node add-advice-to-db.js)"
     ]
   }
 }
