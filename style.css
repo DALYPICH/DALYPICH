@@ -119,6 +119,27 @@ nav a:hover {
   font-style: italic;
 }
 
+.checklist-item.new-content {
+  border-left: 4px solid #e74c3c;
+  background-color: #fdf2f2;
+}
+
+.checklist-item.new-content .item-question {
+  color: #c0392b;
+}
+
+.new-badge {
+  display: inline-block;
+  background-color: #e74c3c;
+  color: white;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  margin-left: 8px;
+  font-weight: bold;
+  vertical-align: middle;
+}
+
 .checklist-item:last-child {
   border-bottom: none;
   border-radius: 0 0 8px 8px;

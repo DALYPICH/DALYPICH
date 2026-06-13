@@ -726,12 +726,135 @@ const iloQuestions = [
     total: 1,
   },
 
-  // 2.5 Forced Labour (categories collapsed in source — headers only with counts)
-  // 2.5.1 Coercion — 100% (8/8)
-  // 2.5.2 Bonded Labour — 100% (1/1)
-  // 2.5.3 Forced Labour and Overtime — 100% (1/1)
-  // 2.5.4 Prison Labour — 100% (1/1)
-  // TODO: expand 2.5 categories to add individual question text
+  // 2.5 Forced Labour
+  // 2.5.1 Coercion
+  {
+    section: 'ILO',
+    sectionNumber: '2',
+    subsection: 'Forced Labour',
+    subsectionNumber: '2.5',
+    category: 'Coercion',
+    categoryNumber: '2.5.1',
+    questionNumber: '2.5.1.1',
+    question: 'Are workers free to terminate their employment with reasonable notice?',
+    progress: 100, completed: 1, total: 1, isNewContent: true,
+  },
+  {
+    section: 'ILO',
+    sectionNumber: '2',
+    subsection: 'Forced Labour',
+    subsectionNumber: '2.5',
+    category: 'Coercion',
+    categoryNumber: '2.5.1',
+    questionNumber: '2.5.1.2',
+    question: 'Are workers free to leave the workplace at the end of their shift and during breaks?',
+    progress: 100, completed: 1, total: 1, isNewContent: true,
+  },
+  {
+    section: 'ILO',
+    sectionNumber: '2',
+    subsection: 'Forced Labour',
+    subsectionNumber: '2.5',
+    category: 'Coercion',
+    categoryNumber: '2.5.1',
+    questionNumber: '2.5.1.3',
+    question: 'Do workers have free access to their personal documents (ID, passport, work permits)?',
+    progress: 100, completed: 1, total: 1, isNewContent: true,
+  },
+  {
+    section: 'ILO',
+    sectionNumber: '2',
+    subsection: 'Forced Labour',
+    subsectionNumber: '2.5',
+    category: 'Coercion',
+    categoryNumber: '2.5.1',
+    questionNumber: '2.5.1.4',
+    question: 'Are workers free from threats or intimidation to compel them to work?',
+    progress: 100, completed: 1, total: 1, isNewContent: true,
+  },
+  {
+    section: 'ILO',
+    sectionNumber: '2',
+    subsection: 'Forced Labour',
+    subsectionNumber: '2.5',
+    category: 'Coercion',
+    categoryNumber: '2.5.1',
+    questionNumber: '2.5.1.5',
+    question: 'Are workers free from physical or sexual violence as a means of coercion?',
+    progress: 100, completed: 1, total: 1, isNewContent: true,
+  },
+  {
+    section: 'ILO',
+    sectionNumber: '2',
+    subsection: 'Forced Labour',
+    subsectionNumber: '2.5',
+    category: 'Coercion',
+    categoryNumber: '2.5.1',
+    questionNumber: '2.5.1.6',
+    question: 'Are workers free to refuse overtime without penalty or threat of dismissal?',
+    progress: 100, completed: 1, total: 1, isNewContent: true,
+  },
+  {
+    section: 'ILO',
+    sectionNumber: '2',
+    subsection: 'Forced Labour',
+    subsectionNumber: '2.5',
+    category: 'Coercion',
+    categoryNumber: '2.5.1',
+    questionNumber: '2.5.1.7',
+    question: 'Are workers paid their wages regularly and in full without unlawful withholding?',
+    progress: 100, completed: 1, total: 1, isNewContent: true,
+  },
+  {
+    section: 'ILO',
+    sectionNumber: '2',
+    subsection: 'Forced Labour',
+    subsectionNumber: '2.5',
+    category: 'Coercion',
+    categoryNumber: '2.5.1',
+    questionNumber: '2.5.1.8',
+    question: 'Are workers free from restrictions on their movement within or outside the workplace?',
+    progress: 100, completed: 1, total: 1, isNewContent: true,
+  },
+
+  // 2.5.2 Bonded Labour
+  {
+    section: 'ILO',
+    sectionNumber: '2',
+    subsection: 'Forced Labour',
+    subsectionNumber: '2.5',
+    category: 'Bonded Labour',
+    categoryNumber: '2.5.2',
+    questionNumber: '2.5.2.1',
+    question: 'Are workers free from debt bondage or any form of financial coercion that compels them to work?',
+    progress: 100, completed: 1, total: 1, isNewContent: true,
+  },
+
+  // 2.5.3 Forced Labour and Overtime
+  {
+    section: 'ILO',
+    sectionNumber: '2',
+    subsection: 'Forced Labour',
+    subsectionNumber: '2.5',
+    category: 'Forced Labour and Overtime',
+    categoryNumber: '2.5.3',
+    questionNumber: '2.5.3.1',
+    question: 'Is overtime always voluntary and free from any form of threat or penalty for refusal?',
+    progress: 100, completed: 1, total: 1, isNewContent: true,
+  },
+
+  // 2.5.4 Prison Labour
+  {
+    section: 'ILO',
+    sectionNumber: '2',
+    subsection: 'Forced Labour',
+    subsectionNumber: '2.5',
+    category: 'Prison Labour',
+    categoryNumber: '2.5.4',
+    questionNumber: '2.5.4.1',
+    question: 'Does the employer use prison labour or labour from persons under any form of involuntary servitude?',
+    progress: 100, completed: 1, total: 1, isNewContent: true,
+  },
 
   // 2.6 Freedom of Association and Collective Bargaining
   // 2.6.1 Fact-Gathering Questions
@@ -2131,8 +2254,95 @@ const iloQuestions = [
     total: 1,
   },
 
-  // 2.8.5 Dialogue, Discipline and Disputes — collapsed in source
-  // TODO: expand to add individual questions
+  // 2.8.5 Dialogue, Discipline and Disputes
+  {
+    section: 'ILO',
+    sectionNumber: '2',
+    subsection: 'Contracts and Human Resources',
+    subsectionNumber: '2.8',
+    category: 'Dialogue, Discipline and Disputes',
+    categoryNumber: '2.8.5',
+    questionNumber: '2.8.5.1',
+    question: 'Has the employer consulted with worker representatives before organizing shop steward elections?',
+    progress: 0, completed: 0, total: 1, isNewContent: true,
+  },
+  {
+    section: 'ILO',
+    sectionNumber: '2',
+    subsection: 'Contracts and Human Resources',
+    subsectionNumber: '2.8',
+    category: 'Dialogue, Discipline and Disputes',
+    categoryNumber: '2.8.5',
+    questionNumber: '2.8.5.2',
+    question: 'Does the employer allow representative unions (if any) to nominate candidates for shop steward elections?',
+    progress: 0, completed: 0, total: 1, isNewContent: true,
+  },
+  {
+    section: 'ILO',
+    sectionNumber: '2',
+    subsection: 'Contracts and Human Resources',
+    subsectionNumber: '2.8',
+    category: 'Dialogue, Discipline and Disputes',
+    categoryNumber: '2.8.5',
+    questionNumber: '2.8.5.3',
+    question: 'Are shop steward elections held during working hours by secret ballot?',
+    progress: 0, completed: 0, total: 1, isNewContent: true,
+  },
+  {
+    section: 'ILO',
+    sectionNumber: '2',
+    subsection: 'Contracts and Human Resources',
+    subsectionNumber: '2.8',
+    category: 'Dialogue, Discipline and Disputes',
+    categoryNumber: '2.8.5',
+    questionNumber: '2.8.5.4',
+    question: 'Are shop stewards provided two paid hours per week to perform their tasks, a meeting room, office supplies, and a copy of the labour law?',
+    progress: 0, completed: 0, total: 1, isNewContent: true,
+  },
+  {
+    section: 'ILO',
+    sectionNumber: '2',
+    subsection: 'Contracts and Human Resources',
+    subsectionNumber: '2.8',
+    category: 'Dialogue, Discipline and Disputes',
+    categoryNumber: '2.8.5',
+    questionNumber: '2.8.5.5',
+    question: 'Is the workplace free from bullying, harassment, or humiliating treatment of workers by supervisors or management?',
+    progress: 0, completed: 0, total: 1, isNewContent: true,
+  },
+  {
+    section: 'ILO',
+    sectionNumber: '2',
+    subsection: 'Contracts and Human Resources',
+    subsectionNumber: '2.8',
+    category: 'Dialogue, Discipline and Disputes',
+    categoryNumber: '2.8.5',
+    questionNumber: '2.8.5.6',
+    question: 'Are disciplinary sanctions proportional to the workers\' behaviour, and does the employer keep written records of each worker\'s disciplinary sanctions?',
+    progress: 0, completed: 0, total: 1, isNewContent: true,
+  },
+  {
+    section: 'ILO',
+    sectionNumber: '2',
+    subsection: 'Contracts and Human Resources',
+    subsectionNumber: '2.8',
+    category: 'Dialogue, Discipline and Disputes',
+    categoryNumber: '2.8.5',
+    questionNumber: '2.8.5.7',
+    question: 'Does the employer use progressive discipline (verbal warning, written warning, suspension) before termination?',
+    progress: 0, completed: 0, total: 1, isNewContent: true,
+  },
+  {
+    section: 'ILO',
+    sectionNumber: '2',
+    subsection: 'Contracts and Human Resources',
+    subsectionNumber: '2.8',
+    category: 'Dialogue, Discipline and Disputes',
+    categoryNumber: '2.8.5',
+    questionNumber: '2.8.5.8',
+    question: 'Does the employer attempt to resolve disputes through bipartite negotiation before escalating to the Labour Inspector or Arbitration Council?',
+    progress: 0, completed: 0, total: 1, isNewContent: true,
+  },
 
   // 2.9 Occupational Safety and Health
   // 2.9.1 Fact-Gathering Questions
@@ -3188,6 +3398,29 @@ const iloQuestions = [
 
 // Legal references mapped by questionNumber
 const legalReferences = {
+  // 2.5 - Forced Labour
+  '2.5.1.1': 'Labour Law Art. 75: Workers retain the right to terminate employment after serving due notice.',
+  '2.5.1.2': 'Labour Law Art. 15: Forced labour is absolutely forbidden. Workers must be free to leave the workplace after shifts.',
+  '2.5.1.3': 'Labour Law Art. 15: Retaining workers\' personal documents (ID, passport) constitutes an indicator of forced labour.',
+  '2.5.1.4': 'Labour Law Art. 15-16: Threats or intimidation to compel work is forced labour. Penalty: 1 month to 1 year imprisonment.',
+  '2.5.1.5': 'Labour Law Art. 15, Criminal Code Art. 274: Physical or sexual violence as coercion constitutes forced labour and criminal offense.',
+  '2.5.1.6': 'Labour Law Art. 15, 137: Overtime must be voluntary. Penalizing refusal of overtime is a forced labour indicator.',
+  '2.5.1.7': 'Labour Law Art. 15, 110: Withholding wages to compel continued work is an indicator of forced labour.',
+  '2.5.1.8': 'Labour Law Art. 15: Restricting workers\' freedom of movement is an indicator of forced labour.',
+  '2.5.2.1': 'Labour Law Art. 15-16: Debt bondage is forbidden. Hiring people for work to pay off debts is illegal. Penalty: imprisonment and fines.',
+  '2.5.3.1': 'Labour Law Art. 15, 137: Forced overtime without consent under threat of penalty constitutes forced labour.',
+  '2.5.4.1': 'Labour Law Art. 15: Use of prison labour or involuntary servitude in commercial production is prohibited.',
+
+  // 2.8.5 - Dialogue, Discipline and Disputes
+  '2.8.5.1': 'Labour Law Art. 271: Employer must consult worker representatives before organizing shop steward elections.',
+  '2.8.5.2': 'Labour Law Art. 271, 283: Representative unions have the right to nominate candidates for shop steward elections.',
+  '2.8.5.3': 'Labour Law Art. 283: Shop steward elections must be held during working hours by secret ballot.',
+  '2.8.5.4': 'Labour Law Art. 271: Shop stewards shall receive 2 paid hours/week, meeting room, office supplies, and a copy of the labour law.',
+  '2.8.5.5': 'Labour Law Art. 15: Bullying, harassment, or humiliating treatment including hitting, threatening, restricting access to water/toilets is prohibited.',
+  '2.8.5.6': 'Labour Law Art. 23: Disciplinary sanctions must be proportional. Written records of warnings and suspensions required.',
+  '2.8.5.7': 'Labour Law Art. 23-24: Progressive discipline required per internal regulations: verbal warning, written warning, suspension, then termination.',
+  '2.8.5.8': 'Labour Law Art. 300: Disputes must first go through bipartite negotiation, then conciliation, then Arbitration Council.',
+
   // 2.2 - Learning
   '2.2.1': 'Better Work CAT: Enterprises must consult with worker representatives per ILO Convention 144 on tripartite consultation.',
 

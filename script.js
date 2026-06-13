@@ -70,10 +70,14 @@ async function loadChecklist() {
           const legalHtml = item.legalReference
             ? `<div class="legal-reference">${item.legalReference}</div>`
             : '';
-          html += `<div class="checklist-item">
+          const newBadge = item.isNewContent
+            ? '<span class="new-badge">NEW - ILO Reference</span>'
+            : '';
+          const newClass = item.isNewContent ? ' new-content' : '';
+          html += `<div class="checklist-item${newClass}">
             <div class="item-main">
               <span class="item-number">${item.questionNumber}.</span>
-              <span class="item-question">${item.question}</span>
+              <span class="item-question">${item.question} ${newBadge}</span>
               <span class="item-progress ${statusClass}">${statusText}</span>
               <div class="progress-bar-container">
                 <div class="progress-bar ${statusClass}" style="width: ${item.progress}%"></div>

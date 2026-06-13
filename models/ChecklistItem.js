@@ -13,6 +13,7 @@ const checklistItemSchema = new mongoose.Schema({
   completed: { type: Number, default: 0 },
   total: { type: Number, default: 1 },
   legalReference: { type: String, default: '' },
+  isNewContent: { type: Boolean, default: false },
 }, { timestamps: true });
 
 module.exports = mongoose.model('ChecklistItem', checklistItemSchema);
