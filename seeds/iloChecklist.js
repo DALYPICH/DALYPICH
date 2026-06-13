@@ -725,6 +725,107 @@ const iloQuestions = [
     completed: 1,
     total: 1,
   },
+
+  // 2.5 Forced Labour (categories collapsed in source — headers only with counts)
+  // 2.5.1 Coercion — 100% (8/8)
+  // 2.5.2 Bonded Labour — 100% (1/1)
+  // 2.5.3 Forced Labour and Overtime — 100% (1/1)
+  // 2.5.4 Prison Labour — 100% (1/1)
+  // TODO: expand 2.5 categories to add individual question text
+
+  // 2.6 Freedom of Association and Collective Bargaining
+  // 2.6.1 Fact-Gathering Questions
+  {
+    section: 'ILO',
+    sectionNumber: '2',
+    subsection: 'Freedom of Association and Collective Bargaining',
+    subsectionNumber: '2.6',
+    category: 'Fact-Gathering Questions',
+    categoryNumber: '2.6.1',
+    questionNumber: '2.6.1.1',
+    question: 'What percentage of workers are union members?',
+    progress: 0,
+    completed: 0,
+    total: 1,
+  },
+  {
+    section: 'ILO',
+    sectionNumber: '2',
+    subsection: 'Freedom of Association and Collective Bargaining',
+    subsectionNumber: '2.6',
+    category: 'Fact-Gathering Questions',
+    categoryNumber: '2.6.1',
+    questionNumber: '2.6.1.2',
+    question: 'How many active registered unions are there in the factory?',
+    progress: 100,
+    completed: 1,
+    total: 1,
+  },
+  {
+    section: 'ILO',
+    sectionNumber: '2',
+    subsection: 'Freedom of Association and Collective Bargaining',
+    subsectionNumber: '2.6',
+    category: 'Fact-Gathering Questions',
+    categoryNumber: '2.6.1',
+    questionNumber: '2.6.1.3',
+    question: 'For each union, please provide name, last registration date, the number of union leaders (man, women), total number of members (men, women).',
+    progress: 100,
+    completed: 1,
+    total: 1,
+  },
+  {
+    section: 'ILO',
+    sectionNumber: '2',
+    subsection: 'Freedom of Association and Collective Bargaining',
+    subsectionNumber: '2.6',
+    category: 'Fact-Gathering Questions',
+    categoryNumber: '2.6.1',
+    questionNumber: '2.6.1.4',
+    question: 'How many collective bargaining agreements are in effect in the factory?',
+    progress: 100,
+    completed: 1,
+    total: 1,
+  },
+  {
+    section: 'ILO',
+    sectionNumber: '2',
+    subsection: 'Freedom of Association and Collective Bargaining',
+    subsectionNumber: '2.6',
+    category: 'Fact-Gathering Questions',
+    categoryNumber: '2.6.1',
+    questionNumber: '2.6.1.5',
+    question: 'For each CBA, please indicate the parties, the percentage of the workforce covered, the duration of the agreement.',
+    progress: 100,
+    completed: 1,
+    total: 1,
+  },
+  {
+    section: 'ILO',
+    sectionNumber: '2',
+    subsection: 'Freedom of Association and Collective Bargaining',
+    subsectionNumber: '2.6',
+    category: 'Fact-Gathering Questions',
+    categoryNumber: '2.6.1',
+    questionNumber: '2.6.1.6',
+    question: 'How many strikes have there been since the last visit?',
+    progress: 0,
+    completed: 0,
+    total: 1,
+  },
+  {
+    section: 'ILO',
+    sectionNumber: '2',
+    subsection: 'Freedom of Association and Collective Bargaining',
+    subsectionNumber: '2.6',
+    category: 'Fact-Gathering Questions',
+    categoryNumber: '2.6.1',
+    questionNumber: '2.6.1.7',
+    question: 'For each strike, please indicate the reason workers went on strike, whether the strike resulted in violence, the duration of the strike.',
+    progress: 100,
+    completed: 1,
+    total: 1,
+  },
 ];
 
 async function seed() {
