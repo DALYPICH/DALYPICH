@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DALYPICH - My Website</title>
+  <title>DALYPICH - ILO Assessment</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -18,11 +18,15 @@
   </header>
 
   <main>
-    <section class="hero">
-      <h2>Hello, World!</h2>
-      <p>This is my first practice website. I am learning web development!</p>
-      <button onclick="sayHello()">Click Me</button>
-    </section>
+    <div class="checklist-container">
+      <div class="section-header">
+        <span class="section-number">2.</span>
+        <span class="section-title">ILO</span>
+        <span class="section-progress" id="sectionProgress"></span>
+      </div>
+
+      <div id="checklistContent"></div>
+    </div>
   </main>
 
   <footer>
