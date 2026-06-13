@@ -12,6 +12,7 @@ const checklistItemSchema = new mongoose.Schema({
   progress: { type: Number, default: 0, min: 0, max: 100 },
   completed: { type: Number, default: 0 },
   total: { type: Number, default: 1 },
+  legalReference: { type: String, default: '' },
 }, { timestamps: true });
 
 module.exports = mongoose.model('ChecklistItem', checklistItemSchema);

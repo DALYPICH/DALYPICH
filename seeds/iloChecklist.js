@@ -3186,6 +3186,287 @@ const iloQuestions = [
   },
 ];
 
+// Legal references mapped by questionNumber
+const legalReferences = {
+  // 2.2 - Learning
+  '2.2.1': 'Better Work CAT: Enterprises must consult with worker representatives per ILO Convention 144 on tripartite consultation.',
+
+  // 2.3 - Child Labour
+  '2.3.1.1': 'Labour Law Art. 177: Minimum employment age is 15 years. Light work permitted from age 12 with conditions.',
+  '2.3.2.1': 'Labour Law Art. 175: Hazardous or harmful work is prohibited for workers under 18 years of age.',
+  '2.3.2.2': 'Labour Law Art. 175, 172: Night work (22:00-05:00) prohibited for under 18. Max 8 hours/day for young workers.',
+  '2.3.2.3': 'Labour Law Art. 175: Unconditional worst forms of child labour (slavery, trafficking, forced recruitment) absolutely prohibited.',
+  '2.3.3.1': 'Labour Law Art. 177-178: Employers must reliably verify age of workers before hiring using official documents.',
+  '2.3.3.2': 'Labour Law Art. 177: Employers must maintain records of young workers including proof of age and job assignments.',
+
+  // 2.4.1 - Race and Origin
+  '2.4.1.1': 'Labour Law Art. 12: No discrimination based on race, colour, sex, creed, religion, political opinion, birth, social origin, or union membership.',
+  '2.4.1.2': 'Labour Law Art. 12: Race, colour or origin shall not be a factor in hiring. Equal opportunity for all applicants.',
+  '2.4.1.3': 'Labour Law Art. 12: Conditions of work must not differ based on race, colour, or origin.',
+  '2.4.1.4': 'Labour Law Art. 12, 106: Equal pay for equal work regardless of origin, sex, or age. No wage discrimination.',
+  '2.4.1.5': 'Labour Law Art. 12: Promotion and training opportunities must be available without discrimination.',
+  '2.4.1.6': 'Labour Law Art. 12: Harassment based on race, colour, or origin violates anti-discrimination provisions.',
+  '2.4.1.7': 'Labour Law Art. 12: Termination decisions must not be based on race, colour, or national origin.',
+
+  // 2.4.2 - Religion and Political Opinion
+  '2.4.2.1': 'Labour Law Art. 12: Recruitment materials must not reference applicant\'s religion or political opinion.',
+  '2.4.2.2': 'Labour Law Art. 12: Religion or political opinion shall not be a factor in hiring decisions.',
+  '2.4.2.3': 'Labour Law Art. 12: Conditions of work must not differ based on creed, religion, or political opinion.',
+  '2.4.2.4': 'Labour Law Art. 12, 106: Pay must not be influenced by worker\'s religion or political opinion.',
+  '2.4.2.5': 'Labour Law Art. 12: Promotion and training must be provided without discrimination on religion or politics.',
+  '2.4.2.6': 'Labour Law Art. 12: Harassment based on religion or political opinion is prohibited.',
+  '2.4.2.7': 'Labour Law Art. 12: Termination or retirement must not be based on religion or political opinion.',
+
+  // 2.4.3 - Gender
+  '2.4.3.1': 'Labour Law Art. 12, 45: Job announcements must not specify gender unless inherent to the job.',
+  '2.4.3.2': 'Labour Law Art. 45: All forms of discrimination against women in employment shall be abolished.',
+  '2.4.3.3': 'Labour Law Art. 12, 45: Conditions of work must not differ based on gender.',
+  '2.4.3.4': 'Labour Law Art. 106: Equal pay for equal work regardless of sex. No wage discrimination.',
+  '2.4.3.5': 'Labour Law Art. 12, 45: Promotion and training must be equally accessible regardless of gender.',
+  '2.4.3.6': 'Labour Law Art. 45: Termination or retirement decisions must not be based on gender.',
+  '2.4.3.7': 'Labour Law Art. 12: Sexual harassment in the workplace is prohibited and constitutes discrimination.',
+  '2.4.3.8': 'Labour Law Art. 182: Pregnancy testing or contraceptive use as a condition of employment is prohibited.',
+  '2.4.3.9': 'Labour Law Art. 182: Maternity leave must be included in workers\' period of continuous service.',
+  '2.4.3.10': 'Labour Law Art. 46: A woman shall not lose her job, wages, benefits, or seniority because of pregnancy or maternity leave.',
+
+  // 2.4.4 - Other Grounds (HIV/AIDS, Disability)
+  '2.4.4.1': 'Labour Law Art. 12: HIV/AIDS status must not be a factor in hiring decisions. ILO Recommendation 200.',
+  '2.4.4.2': 'Labour Law Art. 12: HIV/AIDS testing as a condition of employment is prohibited.',
+  '2.4.4.3': 'Labour Law Art. 12: Conditions of work must not differ based on HIV/AIDS status.',
+  '2.4.4.4': 'Labour Law Art. 12, 106: Pay must not be influenced by HIV/AIDS status.',
+  '2.4.4.5': 'Labour Law Art. 12: Promotion and training must not be denied based on HIV/AIDS status.',
+  '2.4.4.6': 'Labour Law Art. 12: Harassment based on real or perceived HIV/AIDS status is prohibited.',
+  '2.4.4.7': 'Labour Law Art. 12: Termination must not be based on real or perceived HIV/AIDS status.',
+  '2.4.4.8': 'Labour Law Art. 12: Disabled applicants must be evaluated on their ability to perform the job.',
+  '2.4.4.9': 'Labour Law Art. 12: Employers should take reasonable steps to accommodate disabled workers.',
+  '2.4.4.10': 'Labour Law Art. 12: Conditions of work must not differ based on disability.',
+  '2.4.4.11': 'Labour Law Art. 12, 106: Pay must not be influenced by disability status.',
+  '2.4.4.12': 'Labour Law Art. 12: Promotion and training opportunities must not be denied based on disability.',
+  '2.4.4.13': 'Labour Law Art. 12: Harassment based on disability is prohibited.',
+  '2.4.4.14': 'Labour Law Art. 12: Termination or retirement must not be based on disability.',
+
+  // 2.6.1 - Freedom of Association (Fact-Gathering)
+  '2.6.1.1': 'Labour Law Art. 266: Workers have the right to form and join unions of their own choosing.',
+  '2.6.1.2': 'Labour Law Art. 266: Workers and employers may freely establish professional organizations.',
+  '2.6.1.3': 'Labour Law Art. 266-267: Trade unions must be registered. Registration grants legal personality.',
+  '2.6.1.4': 'Labour Law Art. 96: Collective bargaining agreements are binding on all parties.',
+  '2.6.1.5': 'Labour Law Art. 96-97: CBA must specify parties, coverage, and duration.',
+  '2.6.1.6': 'Labour Law Art. 318-325: Workers have the right to strike after exhausting conciliation and arbitration.',
+  '2.6.1.7': 'Labour Law Art. 318, 331: Strikes must follow legal procedures. Non-strikers\' freedom must be protected.',
+
+  // 2.6.2 - Union Operations
+  '2.6.2.1': 'Labour Law Art. 266: Workers can freely form and join unions without prior authorization.',
+  '2.6.2.2': 'Labour Law Art. 266: Unions may freely form and join federations and confederations.',
+  '2.6.2.3': 'Labour Law Art. 266, 279: Employers must not require workers to join a union. Union membership is voluntary.',
+
+  // 2.6.3 - Union in the Workplace
+  '2.6.3.1': 'Labour Law Art. 271: Union representatives shall have access to workers in the workplace.',
+  '2.6.3.2': 'Labour Law Art. 271: Employers shall deduct union dues when workers request this in writing.',
+  '2.6.3.3': 'Labour Law Art. 271: Employers must provide facilities for union activities including notice boards.',
+
+  // 2.6.4 - Interference and Discrimination
+  '2.6.4.1': 'Labour Law Art. 271: Workers are free to meet without management present.',
+  '2.6.4.2': 'Labour Law Art. 280: Employers must treat all unions equally. No favouritism or interference.',
+  '2.6.4.3': 'Labour Law Art. 280: Employer involvement in union decision making or administration is prohibited.',
+  '2.6.4.4': 'Labour Law Art. 280: Employers must not provide incentives to discourage union membership.',
+  '2.6.4.5': 'Labour Law Art. 279: Union membership must not be a factor in hiring decisions.',
+  '2.6.4.6': 'Labour Law Art. 280: Employers must not manipulate or attempt to control unions.',
+  '2.6.4.7': 'Labour Law Art. 279: Workers must not be punished for joining a union or engaging in union activities.',
+  '2.6.4.8': 'Labour Law Art. 279: Threatening, intimidating, or harassing union members is prohibited.',
+  '2.6.4.9': 'Labour Law Art. 279: Termination based on union membership or union activities is unlawful.',
+  '2.6.4.10': 'Labour Law Art. 282: Union officials may not be terminated without Ministry of Labour permission.',
+
+  // 2.6.5 - Collective Bargaining
+  '2.6.5.1': 'Labour Law Art. 96: Employers must consult with unions where legally required.',
+  '2.6.5.2': 'Labour Law Art. 96-97: Employers must bargain in good faith with representative unions.',
+  '2.6.5.3': 'Labour Law Art. 96: CBA terms take precedence over individual contracts where more favourable to workers.',
+  '2.6.5.4': 'Labour Law Art. 96: Workers must have access to the text of applicable collective bargaining agreements.',
+  '2.6.5.5': 'Labour Law Art. 96: All provisions of the CBA in force must be implemented by the employer.',
+  '2.6.5.6': 'Labour Law Art. 318, 331: Workers\' right to participate in lawful strikes must not be impeded.',
+  '2.6.5.7': 'Labour Law Art. 318: Hiring replacement workers during a lawful strike is prohibited.',
+  '2.6.5.8': 'Labour Law Art. 279, 318: Workers must not be punished for participating in a lawful strike.',
+  '2.6.5.9': 'Labour Law Art. 331: Use of force to break up a peaceful strike or assembly is prohibited.',
+
+  // 2.7.1 - Minimum Wages
+  '2.7.1.1': 'Labour Law Art. 104: Minimum wage set by Prakas. 2026 rate: USD 210/month for garment/textile/footwear sectors.',
+  '2.7.1.2': 'Labour Law Art. 104-106: Piece rate workers must earn at least minimum wage for ordinary hours worked.',
+  '2.7.1.3': 'Labour Law Art. 104: Minimum wage applies to all worker types — probationary, casual, and contract workers.',
+  '2.7.1.4': 'Labour Law Art. 104: Piece rates must be set so that workers of average ability earn at least minimum wage.',
+
+  // 2.7.2 - Overtime Wages
+  '2.7.2.1': 'Labour Law Art. 137-139: Daytime overtime: 150% of regular wage.',
+  '2.7.2.2': 'Labour Law Art. 139: Night overtime (22:00-05:00): 200% of regular wage.',
+  '2.7.2.3': 'Labour Law Art. 139, 164: Work on weekly rest days: 200% premium pay.',
+  '2.7.2.4': 'Labour Law Art. 139, 164: Work on public holidays: 200% premium pay plus regular daily wage.',
+  '2.7.2.5': 'Labour Law Art. 139: Overtime workers must receive meal allowance or one free meal.',
+  '2.7.2.6': 'Labour Law Art. 144: Regular night shift workers (22:00-05:00): 130% of daytime hourly wage.',
+
+  // 2.7.3 - Wage Payment
+  '2.7.3.1': 'Labour Law Art. 110: Wages must be paid at regular intervals — at least twice per month for manual workers.',
+  '2.7.3.2': 'Labour Law Art. 110: Wages must be paid in legal currency, during working hours, at the workplace.',
+
+  // 2.7.4 - Wage Deductions and Records
+  '2.7.4.1': 'Labour Law Art. 110: Only legally authorized deductions are permitted. No unauthorized wage deductions.',
+  '2.7.4.2': 'Labour Law Art. 110-112: Employers must maintain one accurate payroll record.',
+  '2.7.4.3': 'Labour Law Art. 112: Workers must be informed about wage calculations and deductions via pay slips.',
+
+  // 2.7.5 - Paid Leave Compensation
+  '2.7.5.1': 'Labour Law Art. 164: Public holidays: regular daily wage for days not worked; 200% for days worked.',
+  '2.7.5.2': 'Labour Law Art. 166-170: Annual leave must be paid before leave, based on average actual earnings.',
+  '2.7.5.3': 'Labour Law Art. 71: Sick leave pay: 100% (1st month), 60% (2nd-3rd month), per Internal Regulations or law.',
+  '2.7.5.4': 'Labour Law Art. 169: Special leave: up to 7 days/year paid for family events.',
+  '2.7.5.5': 'Labour Law Art. 183: Maternity leave: 50% of wages for 90 days for workers with 1+ year of service.',
+  '2.7.5.6': 'Labour Law Art. 184: Breastfeeding: 1 hour paid time off per day during working hours for 1 year after birth.',
+  '2.7.5.7': 'Labour Law Art. 71: During work suspension, workers entitled to compensation as specified by law.',
+
+  // 2.7.6 - Social Security and Benefits
+  '2.7.6.1': 'Labour Law Art. 21: Employers must register workers with NSSF and pay required employer contributions.',
+  '2.7.6.2': 'Labour Law Art. 248: Employer pays wages for first day missed due to work-related accident.',
+  '2.7.6.3': 'Labour Law Art. 21: Attendance bonus must be paid correctly during legally required leave.',
+  '2.7.6.4': 'Labour Law Art. 21: New workers starting after the 1st of the month receive prorated attendance bonus.',
+  '2.7.6.5': 'Prakas: Employers must pay mandatory wage supplements including transportation allowance.',
+  '2.7.6.6': 'Labour Law Art. 89, Prakas: Seniority bonus paid based on years of continuous service.',
+  '2.7.6.7': 'Labour Law Art. 144: Night shift workers finishing 22:00-05:00 must receive transport home or sleeping accommodation.',
+  '2.7.6.8': 'Labour Law Art. 89: UDC workers receive seniority indemnity: 7.5 days wages each June and December.',
+
+  // 2.8.1 - HR Fact-Gathering
+  '2.8.1.9': 'Labour Law Art. 46: Subcontractors must comply with labour standards. Principal employer is jointly liable.',
+  '2.8.1.13': 'Labour Law: All factories must hold a valid business license from relevant authorities.',
+  '2.8.1.14': 'Labour Law Art. 23: HR policies must demonstrate commitment to legal compliance.',
+  '2.8.1.15': 'Labour Law Art. 12: Recruitment must follow non-discriminatory and lawful procedures.',
+  '2.8.1.16': 'Labour Law Art. 23-24: Disciplinary and termination procedures must follow shop rules and law.',
+  '2.8.1.17': 'Labour Law Art. 300: Disputes resolved through conciliation, then arbitration. Grievance procedures required.',
+  '2.8.1.21': 'Labour Law Art. 271: Worker representatives on bipartite committees must be freely elected.',
+  '2.8.1.22': 'Labour Law Art. 279: Retaliation against worker representatives is prohibited.',
+  '2.8.1.23': 'Labour Law Art. 271: Employers must maintain open communication with trade union representatives.',
+  '2.8.1.24': 'Labour Law Art. 266, 280: Bipartite committees must not replace or undermine trade unions.',
+
+  // 2.8.2 - Employment Contracts
+  '2.8.2.1': 'Labour Law Art. 65-67: Employment contracts must specify terms, wages, working hours, and job description.',
+  '2.8.2.2': 'Labour Law Art. 65: Contracts must comply with Cambodian labour law and factory internal regulations.',
+  '2.8.2.3': 'Labour Law Art. 65: Workers must understand their contract terms. Contracts must be in Khmer.',
+  '2.8.2.4': 'Labour Law Art. 65-67: All workers must have a written employment contract — FDC or UDC.',
+  '2.8.2.5': 'Labour Law Art. 23-24: Internal regulations must comply with legal requirements and be approved by Labour Inspector.',
+
+  // 2.8.3 - Hiring and Employment Terms
+  '2.8.3.1': 'Labour Law Art. 15-16: Charging workers recruitment fees is prohibited. Related to forced labour provisions.',
+  '2.8.3.2': 'Labour Law Art. 68: Probation max 3 months. Apprenticeship contracts max 2 years.',
+  '2.8.3.3': 'Labour Law Art. 89: Entire period of continuous employment must count for entitlements (leave, seniority).',
+  '2.8.3.4': 'Labour Law Art. 65: FDC maximum 2 years, renewable once. Exceeding converts to UDC.',
+  '2.8.3.5': 'Labour Law Art. 12: Migrant workers legally employed have same protections as national workers.',
+
+  // 2.8.4 - Termination
+  '2.8.4.1': 'Labour Law Art. 116: All outstanding wages and indemnities must be paid within 48 hours of termination.',
+  '2.8.4.2': 'Labour Law Art. 73: Termination must be for valid reasons — serious misconduct, economic reasons, or force majeure.',
+  '2.8.4.3': 'Labour Law Art. 73-74: Workers must receive proper notice and opportunity to defend themselves before termination.',
+  '2.8.4.4': 'Labour Law Art. 89: FDC severance: 5% of total wages earned. UDC: seniority indemnity per Art. 89.',
+  '2.8.4.5': 'Labour Law Art. 89, 116: Outstanding wages and seniority indemnity must be paid upon dismissal.',
+  '2.8.4.6': 'Labour Law Art. 166: Unused paid annual leave must be compensated upon resignation or termination.',
+  '2.8.4.7': 'Labour Law Art. 73: Unjustified dismissal entitles worker to damages determined by the court.',
+  '2.8.4.8': 'Labour Law Art. 95: Mass layoffs require prior notification to Labour Ministry and consultation with workers.',
+
+  // 2.9.1 - OSH Management Systems
+  '2.9.1.1': 'Labour Law Art. 228-229: Employers must establish an OSH management system and assign responsibility.',
+  '2.9.1.2': 'Labour Law Art. 230: Enterprises with 50+ workers must have an OSH committee with equal worker/employer representation.',
+  '2.9.1.3': 'Labour Law Art. 229: Employers must assess workplace hazards and implement preventive measures.',
+  '2.9.1.4': 'Labour Law Art. 229-230: OSH policies must be communicated to all workers and regularly reviewed.',
+  '2.9.1.5': 'Labour Law Art. 235: All workplace accidents and occupational diseases must be reported to Labour Inspector.',
+  '2.9.1.6': 'Labour Law Art. 235: Accident records must be maintained and available for inspection.',
+
+  // 2.9.2 - Chemicals and Hazardous Substances
+  '2.9.2.1': 'Labour Law Art. 228: Employers must identify and assess risks from hazardous chemicals.',
+  '2.9.2.2': 'Labour Law Art. 228: Chemicals must be properly stored, labelled, and handled per safety procedures.',
+  '2.9.2.3': 'Labour Law Art. 228: Workers handling chemicals must receive training and protective equipment.',
+  '2.9.2.4': 'Labour Law Art. 228: Material Safety Data Sheets (MSDS) must be available for all hazardous substances.',
+
+  // 2.9.3 - PPE
+  '2.9.3.1': 'Labour Law Art. 229: Employers must provide appropriate PPE free of charge to exposed workers.',
+  '2.9.3.2': 'Labour Law Art. 229: Workers must be trained on proper use, care, and maintenance of PPE.',
+  '2.9.3.3': 'Labour Law Art. 229: PPE must be suitable for the specific hazards in each work area.',
+  '2.9.3.4': 'Labour Law Art. 229: Workers must use PPE as instructed. Employers must enforce PPE requirements.',
+  '2.9.3.5': 'Labour Law Art. 229: PPE must be maintained, replaced when damaged, and properly stored.',
+
+  // 2.9.4 - Worker Protection
+  '2.9.4.1': 'Labour Law Art. 228: All machinery must have appropriate safety guards and protective devices.',
+  '2.9.4.2': 'Labour Law Art. 228: Electrical installations must comply with safety standards.',
+  '2.9.4.3': 'Labour Law Art. 228: Equipment must be regularly maintained and inspected for safe operation.',
+  '2.9.4.4': 'Labour Law Art. 228: Only trained, authorized workers may operate dangerous machinery.',
+  '2.9.4.5': 'Labour Law Art. 228: Lockout/tagout procedures required for equipment maintenance.',
+  '2.9.4.6': 'Labour Law Art. 228: Workers must receive training on safe operation of machinery.',
+  '2.9.4.7': 'Labour Law Art. 228: Safety devices on machines must not be removed or rendered ineffective.',
+  '2.9.4.8': 'Labour Law Art. 228: Employers must ensure structural safety of buildings and installations.',
+  '2.9.4.9': 'Labour Law Art. 228: Walkways, stairs, and platforms must be safe and properly maintained.',
+  '2.9.4.10': 'Labour Law Art. 228: Lifting equipment must be regularly inspected and certified.',
+  '2.9.4.11': 'Labour Law Art. 228: Only licensed operators may operate forklifts and lifting equipment.',
+  '2.9.4.12': 'Labour Law Art. 228: Boiler, generator, and pressure vessel operators must hold required permits.',
+  '2.9.4.13': 'Labour Law Art. 228: Government permits required for boilers, generators, and pressure vessels.',
+  '2.9.4.14': 'Labour Law Art. 228: Safety warning signs must be posted in areas with identified hazards.',
+  '2.9.4.15': 'Labour Law Art. 228: Fall protection measures required for work at heights above 2 metres.',
+
+  // 2.9.5 - Working Environment
+  '2.9.5.1': 'Labour Law Art. 228: Temperature and ventilation must be adequate for worker health and comfort.',
+  '2.9.5.2': 'Labour Law Art. 228: Noise levels must not exceed legal limits. Hearing protection required above 85 dB.',
+  '2.9.5.3': 'Labour Law Art. 228: Adequate lighting must be provided in all work areas and passages.',
+  '2.9.5.4': 'Labour Law Art. 228: Workplace must be kept clean, orderly, and free of unnecessary hazards.',
+
+  // 2.9.6 - Welfare Facilities
+  '2.9.6.1': 'Labour Law Art. 228, 234: Adequate toilet facilities must be provided — separate for men and women.',
+  '2.9.6.2': 'Labour Law Art. 228: Hand washing facilities with soap must be accessible near toilets and work areas.',
+  '2.9.6.3': 'Labour Law Art. 228, 234: Free, safe drinking water must be provided to all workers.',
+  '2.9.6.4': 'Labour Law Art. 228: Drinking water must be served via hygienic cups or dispensers.',
+  '2.9.6.5': 'Labour Law Art. 186: Nursing room required in enterprises with 100+ female workers.',
+  '2.9.6.6': 'Labour Law Art. 186: Enterprises with 100+ female workers must provide day care or pay childcare costs.',
+
+  // 2.9.7 - Health Services and First Aid
+  '2.9.7.1': 'Labour Law Art. 230: Pre-employment medical examinations are required for all workers.',
+  '2.9.7.2': 'Labour Law Art. 182: Employers must protect pregnant and nursing workers from hazardous conditions.',
+  '2.9.7.3': 'ILO Recommendation 200: Workplaces should address HIV/AIDS through workplace committees and policies.',
+  '2.9.7.4': 'Labour Law Art. 234: Enterprises with 50+ workers must have an infirmary with qualified medical staff.',
+  '2.9.7.5': 'Labour Law Art. 234: First aid boxes must be accessible and adequately stocked in all work areas.',
+  '2.9.7.6': 'Labour Law Art. 234: A sufficient number of workers must be trained in first aid procedures.',
+
+  // 2.9.8 - Worker Accommodation
+  '2.9.8.1': 'Labour Law Art. 228: Accommodation must be separate from the workplace / production areas.',
+  '2.9.8.2': 'Labour Law Art. 228: Accommodation must have adequate fire protection and safety measures.',
+  '2.9.8.3': 'Labour Law Art. 228: Emergency preparedness plans must cover accommodation facilities.',
+
+  // 2.9.9 - Emergency Preparedness
+  '2.9.9.1': 'Labour Law Art. 228, Prakas 039: Fire detection and alarm systems are mandatory.',
+  '2.9.9.2': 'Labour Law Art. 228: Adequate fire extinguishers must be provided and within easy reach of workers.',
+  '2.9.9.3': 'Labour Law Art. 228: Workers must be trained to use fire-fighting equipment. Annual training required.',
+  '2.9.9.4': 'Labour Law Art. 228: Emergency exits and evacuation routes must be clearly marked with illuminated signs.',
+  '2.9.9.5': 'Labour Law Art. 228: Number of emergency exits must be sufficient for the number of workers.',
+  '2.9.9.6': 'Labour Law Art. 228: Emergency exits must not be blocked or obstructed during working hours.',
+  '2.9.9.7': 'Labour Law Art. 228: Emergency exit doors must remain unlocked during all working hours including overtime.',
+  '2.9.9.8': 'Labour Law Art. 228: Escape routes must be kept clear of obstructions at all times.',
+  '2.9.9.9': 'Labour Law Art. 228: Emergency drills must be conducted at least twice per year.',
+  '2.9.9.10': 'Labour Law Art. 228: Flammable materials must be stored in designated, fire-resistant areas.',
+  '2.9.9.11': 'Labour Law Art. 228: Ignition sources must be controlled and safeguarded near flammable materials.',
+
+  // 2.10.1 - Regular Hours
+  '2.10.1.1': 'Labour Law Art. 137-140: Maximum 8 hours/day, 48 hours/week. Total including overtime: max 10 hours/day.',
+  '2.10.1.2': 'Labour Law Art. 146-147: Weekly rest of 24 consecutive hours mandatory. No worker may work more than 6 days/week.',
+  '2.10.1.3': 'Labour Law Art. 137: Employers must maintain accurate records of actual hours worked by each worker.',
+  '2.10.1.4': 'Labour Law Art. 137-140: Overtime limited to 2 hours/day. Additional 1 hour/day for 30 days/year for interruptions.',
+  '2.10.1.5': 'Labour Law Art. 137: Overtime must be voluntary. Employers cannot impose penalties for refusal.',
+  '2.10.1.6': 'Labour Law Art. 137-140: Prior Labour Inspector approval required before overtime. Prakas 112/25: via LACMS system.',
+  '2.10.1.7': 'Labour Law Art. 151-152: Suspension of weekly rest requires Labour Inspector permission. Compensatory rest within 30 days.',
+
+  // 2.10.2 - Leave
+  '2.10.2.1': 'Labour Law Art. 166: Annual leave: 1.5 days/month = 18 days/year. +1 day for every 3 years of service.',
+  '2.10.2.2': 'Labour Law Art. 169: Special leave: up to 7 days/year for family events (marriage, birth, death).',
+  '2.10.2.3': 'Labour Law Art. 71: Sick leave: 100% pay (1st month), 60% (2nd-3rd month), unpaid (4-6 months). Medical certificate required.',
+  '2.10.2.4': 'Labour Law Art. 182-183: Maternity leave: 90 days minimum. 50% wage for 1+ year of service. No dismissal during pregnancy.',
+  '2.10.2.5': 'Labour Law Art. 184: Breastfeeding: 1 hour paid time off per day during working hours for 1 year after birth.',
+};
+
+// Apply legal references to questions
+iloQuestions.forEach(q => {
+  if (legalReferences[q.questionNumber]) {
+    q.legalReference = legalReferences[q.questionNumber];
+  }
+});
+
 async function seed() {
   try {
     await mongoose.connect(process.env.MONGODB_URI);

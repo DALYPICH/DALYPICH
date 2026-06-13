@@ -67,13 +67,19 @@ async function loadChecklist() {
           const statusClass = isComplete ? 'complete' : 'incomplete';
           const statusText = `${item.progress}% (${item.completed}/${item.total})`;
 
+          const legalHtml = item.legalReference
+            ? `<div class="legal-reference">${item.legalReference}</div>`
+            : '';
           html += `<div class="checklist-item">
-            <span class="item-number">${item.questionNumber}.</span>
-            <span class="item-question">${item.question}</span>
-            <span class="item-progress ${statusClass}">${statusText}</span>
-            <div class="progress-bar-container">
-              <div class="progress-bar ${statusClass}" style="width: ${item.progress}%"></div>
+            <div class="item-main">
+              <span class="item-number">${item.questionNumber}.</span>
+              <span class="item-question">${item.question}</span>
+              <span class="item-progress ${statusClass}">${statusText}</span>
+              <div class="progress-bar-container">
+                <div class="progress-bar ${statusClass}" style="width: ${item.progress}%"></div>
+              </div>
             </div>
+            ${legalHtml}
           </div>`;
         });
         html += '</div>';

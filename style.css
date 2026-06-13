@@ -38,7 +38,7 @@ nav a:hover {
 .checklist-container {
   max-width: 900px;
   margin: 30px auto;
-  padding: 0 20px 80px;
+  padding: 0 20px 120px;
 }
 
 .section-header {
@@ -101,11 +101,22 @@ nav a:hover {
 }
 
 .checklist-item {
-  display: flex;
-  align-items: center;
   padding: 14px 20px 14px 56px;
   border-bottom: 1px solid #ecf0f1;
   transition: background-color 0.2s;
+}
+
+.item-main {
+  display: flex;
+  align-items: center;
+}
+
+.legal-reference {
+  color: #e74c3c;
+  font-size: 12px;
+  padding: 4px 0 4px 70px;
+  line-height: 1.5;
+  font-style: italic;
 }
 
 .checklist-item:last-child {
