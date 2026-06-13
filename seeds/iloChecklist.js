@@ -3786,10 +3786,10 @@ const compliancePoints = {
   // 2.5 - Forced Labour
   '2.5.1.1': 'CAT #56: Workers were not free to terminate their employment with reasonable notice, and to lower their rank when their contracts expire.',
   '2.5.1.2': 'CAT #57: The employer restricted workers from leaving the workplace.',
-  '2.5.1.3': 'CAT #58: The employer restricted workers\' freedom to come and go from the workplace.',
+  '2.5.1.3': 'CAT #61: The employer denied workers access to their personal documents (ID, work certificate, passport, work permits, visas).',
   '2.5.1.4': 'CAT #59: The employer used violence or the threat of violence to intimidate workers.',
   '2.5.1.7': 'CAT #60: The employer withheld wage payments in order to coerce workers to work.',
-  '2.5.1.3': 'CAT #61: The employer denied workers access to their personal documents (ID, work certificate, passport, work permits, visas).',
+  '2.5.1.8': 'CAT #58: The employer restricted workers\' freedom to come and go from the workplace.',
   '2.5.3.1': 'CAT #63: Workers were forced to work overtime under threat of penalty.',
 
   // 2.6 - Freedom of Association
@@ -3826,6 +3826,31 @@ const compliancePoints = {
   '2.7.3.2': 'CAT #111: Workers were not paid in the manner required (cash, working hours, the workplace, and directly to workers).',
   '2.7.4.1': 'CAT #112: The employer had made unauthorized deductions from wages.',
   '2.7.4.3': 'CAT #113: The employer did not properly inform workers about wage payments and deductions.',
+  '2.7.4.2': 'CAT #114: The employer did not keep only one accurate payroll record.',
+  '2.7.5.1': 'CAT #115: The employer did not pay workers correctly for paid public holidays.',
+  '2.7.5.2': 'CAT #118: The employer did not give workers at least 18 days of annual leave per year or an additional day for every three years of service.',
+  '2.7.5.3': 'CAT #120: The employer did not provide workers up to six months of time off for an illness certified by a qualified doctor.',
+  '2.7.5.4': 'CAT #121: The employer did not give workers up to 7 days of time off for special leave per year.',
+  '2.7.5.5': 'CAT #122: The employer did not provide workers at least 90 days of maternity leave.',
+  '2.7.5.6': 'CAT #123: The employer did not pay workers correctly for the one hour of paid time off per day for breastfeeding during working hours.',
+  '2.7.6.5': 'CAT #124: The employer did not pay all workers the correct mandatory wage supplements (including seniority and housing allowances).',
+  '2.7.6.1': 'CAT #125: The employer did not pay the required employer contribution to the National Social Security Fund.',
+  '2.7.6.2': 'CAT #126: The employer did not pay workers their wages for the first day they miss work due to work-related accidents or illnesses.',
+  '2.7.6.6': 'CAT #127: The employer did not ensure adequate worker seniority bonus.',
+  '2.7.6.3': 'CAT #128: The employer did not pay all workers who work regularly the correct attendance bonus during leave legally required by law.',
+  '2.7.6.4': 'CAT #129: The employer did not pay new workers who start after the first of the month and or casual workers who work part-time.',
+  '2.7.6.8': 'CAT #130: The employer did not give UDC workers the correct seniority indemnity.',
+
+  // 2.8 - Contracts and Human Resources
+  '2.8.1.14': 'CAT #156: There is not an adequate HR policy that is signed by top management with a clear commitment to meet all legal requirements.',
+  '2.8.1.15': 'CAT #157: The employer did not have an adequate recruitment procedure.',
+  '2.8.1.16': 'CAT #158: The employer did not have adequate disciplinary and termination procedures.',
+  '2.8.1.17': 'CAT #159: The employer did not have adequate grievance handling and dispute resolution procedures.',
+  '2.8.1.18': 'CAT #160: The employer did not adequately assign accountability to management for following factory policies and procedures.',
+  '2.8.1.19': 'CAT #161: The employer did not adequately communicate and implement policies and procedures.',
+  '2.8.1.20': 'CAT #162: The employer did not adequately investigate performance under HR policies and procedures to identify weaknesses.',
+  '2.8.2.1': 'CAT #163: Employment contracts did not comply with labour law and the factory\'s internal regulations.',
+  '2.8.2.2': 'CAT #164: Employment contracts did not comply with labour law and the factory\'s internal regulations.',
 };
 
 // Apply legal references and compliance points to questions
