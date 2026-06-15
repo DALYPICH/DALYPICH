@@ -1,7 +1,7 @@
 // Translation system
 const translations = {
   en: {
-    welcome: 'Welcome to DALYPICH',
+    welcome: 'Welcome to Digital Audit',
     home: 'Home',
     about: 'About',
     contact: 'Contact',
@@ -27,7 +27,7 @@ const translations = {
     failed: 'Failed to load checklist. Is the server running?'
   },
   km: {
-    welcome: 'ស្វាគមន៍មកកាន់ DALYPICH',
+    welcome: 'ស្វាគមន៍មកលេខដឹង ឯកតាពិនិត្យ',
     home: 'ទំព័រដើម',
     about: 'អំពី',
     contact: 'ទាក់ទង',
@@ -53,7 +53,7 @@ const translations = {
     failed: 'បរាជ័យក្នុងការផ្ទុកបញ្ជីពិនិត្យ។ តើម៉ាស៊ីនមេកំពុងដំណើរការឬទេ?'
   },
   zh: {
-    welcome: '欢迎来到 DALYPICH',
+    welcome: '欢迎来到 数字审计',
     home: '主页',
     about: '关于',
     contact: '联系',
