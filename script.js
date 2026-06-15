@@ -75,6 +75,13 @@ function t(key) {
   return translations[currentLanguage][key] || translations['en'][key] || key;
 }
 
+function getTranslated(item, field) {
+  if (currentLanguage === 'km' && item.translations && item.translations.km && item.translations.km[field]) {
+    return item.translations.km[field];
+  }
+  return item[field] || '';
+}
+
 function updatePageText() {
   document.querySelector('h1').textContent = t('welcome');
   document.querySelectorAll('nav a')[0].textContent = t('home');
@@ -136,10 +143,14 @@ async function loadChecklist() {
       const subTotal = subItems.length;
       const subPercent = Math.round((subCompleted / subTotal) * 100);
 
+      // Get first item to access translation structure
+      const firstItem = subItems[0];
+      const subTitleDisplay = getTranslated(firstItem, 'subsection') || sub.title;
+
       html += `<div class="subsection-header" onclick="toggleSubsection('sub-${sub.number}')" style="cursor: pointer;">
         <span class="subsection-toggle">▼</span>
         <span class="subsection-number">${sub.number}.</span>
-        <span class="subsection-title">${sub.title}</span>
+        <span class="subsection-title">${subTitleDisplay}</span>
         <span class="subsection-progress">${subPercent}% (${subCompleted} / ${subTotal})</span>
       </div>
       <div id="sub-${sub.number}" class="subsection-content" style="display: block;">`;
@@ -149,9 +160,13 @@ async function loadChecklist() {
         const catTotal = cat.items.length;
         const catPercent = Math.round((catCompleted / catTotal) * 100);
 
+        // Get first item to access translation structure
+        const firstCatItem = cat.items[0];
+        const catTitleDisplay = getTranslated(firstCatItem, 'category') || cat.title;
+
         html += `<div class="category-header">
           <span class="category-number">${cat.number}.</span>
-          <span class="category-title">${cat.title}</span>
+          <span class="category-title">${catTitleDisplay}</span>
           <span class="category-progress">${catPercent}% (${catCompleted} / ${catTotal})</span>
         </div>`;
 
@@ -161,23 +176,23 @@ async function loadChecklist() {
           const statusClass = isComplete ? 'complete' : 'incomplete';
           const statusText = `${item.progress}% (${item.completed}/${item.total})`;
 
-          const legalHtml = item.legalReference
-            ? `<div class="legal-reference">${item.legalReference}</div>`
+          const legalHtml = getTranslated(item, 'legalReference')
+            ? `<div class="legal-reference">${getTranslated(item, 'legalReference')}</div>`
             : '';
-          const complianceHtml = item.compliancePoint
-            ? `<div class="compliance-point">${item.compliancePoint}</div>`
+          const complianceHtml = getTranslated(item, 'compliancePoint')
+            ? `<div class="compliance-point">${getTranslated(item, 'compliancePoint')}</div>`
             : '';
-          const auditHtml = item.auditFindings
-            ? `<div class="audit-findings"><div class="audit-findings-label">🔍 ${t('auditFindingsLabel')}</div>${item.auditFindings}</div>`
+          const auditHtml = getTranslated(item, 'auditFindings')
+            ? `<div class="audit-findings"><div class="audit-findings-label">🔍 ${t('auditFindingsLabel')}</div>${getTranslated(item, 'auditFindings')}</div>`
             : '';
-          const commonProblemsHtml = item.commonProblems
-            ? `<div class="common-problems"><strong>${t('commonProblemsLabel')}</strong> ${item.commonProblems}</div>`
+          const commonProblemsHtml = getTranslated(item, 'commonProblems')
+            ? `<div class="common-problems"><strong>${t('commonProblemsLabel')}</strong> ${getTranslated(item, 'commonProblems')}</div>`
             : '';
-          const adviceHtml = item.advice
-            ? `<div class="advice"><div class="advice-label">💡 ${t('adviceLabel')}</div>${item.advice}</div>`
+          const adviceHtml = getTranslated(item, 'advice')
+            ? `<div class="advice"><div class="advice-label">💡 ${t('adviceLabel')}</div>${getTranslated(item, 'advice')}</div>`
             : '';
-          const reminderHtml = item.reminder
-            ? `<div class="reminder"><div style="font-weight: bold; margin-bottom: 4px;">📌 ${t('reminderLabel')}</div>${item.reminder}</div>`
+          const reminderHtml = getTranslated(item, 'reminder')
+            ? `<div class="reminder"><div style="font-weight: bold; margin-bottom: 4px;">📌 ${t('reminderLabel')}</div>${getTranslated(item, 'reminder')}</div>`
             : '';
 
           // Evidence section
@@ -255,7 +270,7 @@ async function loadChecklist() {
           html += `<div class="checklist-item${newClass}">
             <div class="item-main">
               <span class="item-number">${item.questionNumber}.</span>
-              <span class="item-question">${item.question} ${newBadge} ${criticalBadge}</span>
+              <span class="item-question">${getTranslated(item, 'question')} ${newBadge} ${criticalBadge}</span>
               <span class="item-progress ${statusClass}">${statusText}</span>
               <div class="progress-bar-container">
                 <div class="progress-bar ${statusClass}" style="width: ${item.progress}%"></div>

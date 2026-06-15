@@ -20,6 +20,20 @@ const checklistItemSchema = new mongoose.Schema({
   advice: { type: String, default: '' },
   reminder: { type: String, default: '' },
   relatedCAT: { type: [String], default: [] },
+  translations: {
+    km: {
+      section: { type: String, default: '' },
+      subsection: { type: String, default: '' },
+      category: { type: String, default: '' },
+      question: { type: String, default: '' },
+      legalReference: { type: String, default: '' },
+      compliancePoint: { type: String, default: '' },
+      auditFindings: { type: String, default: '' },
+      commonProblems: { type: String, default: '' },
+      advice: { type: String, default: '' },
+      reminder: { type: String, default: '' }
+    }
+  },
   evidence: [{
     type: { type: String, enum: ['file', 'link'], required: true },
     title: { type: String, default: '' },
