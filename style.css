@@ -345,50 +345,106 @@ footer {
   color: #3498db;
 }
 
-.evidence-upload-form {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 8px;
-  flex-wrap: wrap;
+.evidence-form-container {
+  background-color: #ffffff;
+  border: 1px solid #ecf0f1;
+  border-radius: 4px;
+  padding: 16px;
+  margin: 12px 0;
 }
 
-.evidence-upload-form input,
-.evidence-upload-form select,
-.evidence-upload-form textarea {
-  padding: 6px 8px;
+.evidence-form-group {
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.evidence-form-group:last-of-type {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.form-select,
+.form-input {
+  padding: 8px 10px;
   font-size: 12px;
   border: 1px solid #bdc3c7;
-  border-radius: 3px;
+  border-radius: 4px;
+  font-family: Arial, sans-serif;
+  transition: border-color 0.2s;
+}
+
+.form-select:focus,
+.form-input:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+}
+
+.form-select {
+  background-color: #ffffff;
+  cursor: pointer;
+  min-height: 32px;
+}
+
+.form-input[type="text"],
+.form-input[type="url"],
+.form-input[type="file"] {
+  padding: 8px 10px;
+}
+
+.form-textarea {
+  padding: 8px 10px;
+  font-size: 12px;
+  border: 1px solid #bdc3c7;
+  border-radius: 4px;
+  font-family: Arial, sans-serif;
+  min-height: 60px;
+  resize: vertical;
   font-family: Arial, sans-serif;
 }
 
-.evidence-upload-form input[type="text"],
-.evidence-upload-form input[type="url"],
-.evidence-upload-form input[type="file"],
-.evidence-upload-form select {
-  flex: 1;
-  min-width: 120px;
+.form-textarea:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
 }
 
-.evidence-upload-form textarea {
-  width: 100%;
-  min-height: 40px;
-  resize: vertical;
-}
-
-.evidence-upload-form button {
-  padding: 6px 12px;
+.btn-upload {
+  padding: 10px 16px;
   background-color: #3498db;
   color: white;
   border: none;
-  border-radius: 3px;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: bold;
+  transition: background-color 0.2s;
+  align-self: flex-start;
 }
 
-.evidence-upload-form button:hover {
+.btn-upload:hover {
   background-color: #2980b9;
+}
+
+.evidence-display-section {
+  margin-top: 12px;
+}
+
+.no-evidence {
+  color: #95a5a6;
+  font-size: 12px;
+  padding: 12px;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-radius: 4px;
 }
 
 .evidence-list {

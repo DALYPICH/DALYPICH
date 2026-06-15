@@ -116,22 +116,40 @@ async function loadChecklist() {
               <div class="evidence-header">
                 <span class="evidence-icon">📋</span>
                 <span>Evidence & Documentation</span>
-                <span class="evidence-toggle" onclick="toggleEvidenceForm('form-${item._id}')">[Show/Hide]</span>
+                <span class="evidence-toggle" onclick="toggleEvidenceForm('form-${item._id}')">[+ Add Evidence]</span>
               </div>
-              <div id="form-${item._id}" style="display:none;">
-                <div class="evidence-upload-form">
-                  <select id="type-${item._id}" onchange="updateEvidenceType('${item._id}')">
-                    <option value="link">Link</option>
-                    <option value="file">File</option>
+
+              <div id="form-${item._id}" class="evidence-form-container" style="display:none;">
+                <div class="evidence-form-group">
+                  <label class="form-label">Evidence Type:</label>
+                  <select id="type-${item._id}" class="form-select" onchange="updateEvidenceType('${item._id}')">
+                    <option value="link">🔗 Link (Google Drive, Website, etc.)</option>
+                    <option value="file">📄 File (Upload Document)</option>
                   </select>
-                  <input type="text" id="title-${item._id}" placeholder="Title/Description" />
-                  <input type="url" id="link-${item._id}" placeholder="https://example.com" style="display:none;" />
-                  <input type="file" id="file-${item._id}" style="display:none;" />
-                  <textarea id="desc-${item._id}" placeholder="Additional notes"></textarea>
-                  <button onclick="uploadEvidence('${item._id}')">Upload Evidence</button>
                 </div>
+
+                <div class="evidence-form-group">
+                  <label class="form-label">Title/Name:</label>
+                  <input type="text" id="title-${item._id}" class="form-input" placeholder="e.g., Payroll Record Q2 2026" />
+                </div>
+
+                <div class="evidence-form-group">
+                  <label class="form-label" id="input-label-${item._id}">URL:</label>
+                  <input type="url" id="link-${item._id}" class="form-input" placeholder="https://drive.google.com/..." style="display:none;" />
+                  <input type="file" id="file-${item._id}" class="form-input" style="display:none;" />
+                </div>
+
+                <div class="evidence-form-group">
+                  <label class="form-label">Additional Notes:</label>
+                  <textarea id="desc-${item._id}" class="form-textarea" placeholder="e.g., Q2 2026 wage records, verified with HR"></textarea>
+                </div>
+
+                <button class="btn-upload" onclick="uploadEvidence('${item._id}')">📤 Upload Evidence</button>
               </div>
-              ${evidenceList ? `<div class="evidence-list">${evidenceList}</div>` : '<div style="color: #95a5a6; font-size: 12px; padding: 8px;">No evidence uploaded yet</div>'}
+
+              <div class="evidence-display-section">
+                ${evidenceList ? `<div class="evidence-list">${evidenceList}</div>` : '<div class="no-evidence">📭 No evidence uploaded yet</div>'}
+              </div>
             </div>
           `;
 
@@ -198,13 +216,16 @@ function updateEvidenceType(itemId) {
   const type = document.getElementById(`type-${itemId}`).value;
   const linkInput = document.getElementById(`link-${itemId}`);
   const fileInput = document.getElementById(`file-${itemId}`);
+  const label = document.getElementById(`input-label-${itemId}`);
 
   if (type === 'link') {
     linkInput.style.display = 'block';
     fileInput.style.display = 'none';
+    if (label) label.textContent = 'URL:';
   } else {
     linkInput.style.display = 'none';
     fileInput.style.display = 'block';
+    if (label) label.textContent = 'Select File:';
   }
 }
 
