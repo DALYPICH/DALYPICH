@@ -107,6 +107,9 @@ const translations = {
 let currentLanguage = localStorage.getItem('language') || 'km';
 
 function changeLanguage(lang) {
+  // Save current scroll position
+  const scrollPosition = window.scrollY;
+
   currentLanguage = lang;
   localStorage.setItem('language', lang);
 
@@ -117,7 +120,10 @@ function changeLanguage(lang) {
   event.target.classList.add('lang-btn-active');
 
   // Reload content
-  loadChecklist();
+  loadChecklist().then(() => {
+    // Restore scroll position after content is loaded
+    window.scrollTo(0, scrollPosition);
+  });
   updatePageText();
 }
 
