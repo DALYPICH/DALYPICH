@@ -1,13 +1,101 @@
+// Translation system
+const translations = {
+  en: {
+    welcome: 'Welcome to DALYPICH',
+    home: 'Home',
+    about: 'About',
+    contact: 'Contact',
+    loading: 'Loading checklist...',
+    noItems: 'No checklist items found.',
+    commonProblems: 'Common Problems:',
+    advice: 'Advice:',
+    evidence: 'Evidence & Documentation',
+    addEvidence: '+ Add Evidence',
+    noEvidenceUploaded: 'No evidence uploaded yet',
+    evidenceType: 'Evidence Type:',
+    link: '🔗 Link (Google Drive, Website, etc.)',
+    file: '📄 File (Upload Document)',
+    titleName: 'Title/Name:',
+    url: 'URL:',
+    selectFile: 'Select File:',
+    additionalNotes: 'Additional Notes:',
+    uploadEvidence: '📤 Upload Evidence',
+    view: 'View',
+    delete: 'Delete',
+    failed: 'Failed to load checklist. Is the server running?'
+  },
+  km: {
+    welcome: 'ស្វាគមន៍មកកាន់ DALYPICH',
+    home: 'ទំព័រដើម',
+    about: 'អំពី',
+    contact: 'ទាក់ទង',
+    loading: 'កំពុងផ្ទុកបញ្ជីពិនិត្យ...',
+    noItems: 'រកមិនឃើញធាតុបញ្ជីពិនិត្យ។',
+    commonProblems: 'បញ្ហាទូទៅ:',
+    advice: 'ដំបូន្មាន:',
+    evidence: 'ភស្តុតាង និងឯកសារ',
+    addEvidence: '+ បន្ថែមភស្តុតាង',
+    noEvidenceUploaded: 'មិនមានភស្តុតាងដែលបានផ្ទុកឡើងនៅឡើយ',
+    evidenceType: 'ប្រភេទភស្តុតាង:',
+    link: '🔗 តំណភ្ជាប់ (Google Drive, គេហទំព័រ។ល។)',
+    file: '📄 ឯកសារ (បង្កើនឯកសារ)',
+    titleName: 'ចំណងជើង/ឈ្មោះ:',
+    url: 'URL:',
+    selectFile: 'ជ្រើសរើសឯកសារ:',
+    additionalNotes: 'កំណត់ចំណាំបន្ថែម:',
+    uploadEvidence: '📤 បង្កើនភស្តុតាង',
+    view: 'មើល',
+    delete: 'លុប',
+    failed: 'បរាជ័យក្នុងការផ្ទុកបញ្ជីពិនិត្យ។ តើម៉ាស៊ីនមេកំពុងដំណើរការឬទេ?'
+  }
+};
+
+let currentLanguage = localStorage.getItem('language') || 'en';
+
+function changeLanguage(lang) {
+  currentLanguage = lang;
+  localStorage.setItem('language', lang);
+
+  // Update language buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.remove('lang-btn-active');
+  });
+  event.target.classList.add('lang-btn-active');
+
+  // Reload content
+  loadChecklist();
+  updatePageText();
+}
+
+function t(key) {
+  return translations[currentLanguage][key] || translations['en'][key] || key;
+}
+
+function updatePageText() {
+  document.querySelector('h1').textContent = t('welcome');
+  document.querySelectorAll('nav a')[0].textContent = t('home');
+  document.querySelectorAll('nav a')[1].textContent = t('about');
+  document.querySelectorAll('nav a')[2].textContent = t('contact');
+  document.querySelector('footer p').textContent = `© 2026 DALYPICH. All rights reserved.`;
+}
+
+// Set initial language
+document.addEventListener('DOMContentLoaded', () => {
+  updatePageText();
+  const langBtn = document.querySelector(`[onclick="changeLanguage('${currentLanguage}')"]`);
+  if (langBtn) langBtn.classList.add('lang-btn-active');
+});
+
 async function loadChecklist() {
   const container = document.getElementById('checklistContent');
-  container.innerHTML = '<div class="loading">Loading checklist...</div>';
+  container.innerHTML = `<div class="loading">${t('loading')}</div>`;
 
   try {
     const res = await fetch('/api/checklist');
     const items = await res.json();
 
     if (!items.length) {
-      container.innerHTML = '<div class="loading">No checklist items found.</div>';
+      container.innerHTML = `<div class="loading">${t('noItems')}</div>`;
       return;
     }
 
@@ -115,40 +203,40 @@ async function loadChecklist() {
             <div class="evidence-section">
               <div class="evidence-header">
                 <span class="evidence-icon">📋</span>
-                <span>Evidence & Documentation</span>
-                <span class="evidence-toggle" onclick="toggleEvidenceForm('form-${item._id}')">[+ Add Evidence]</span>
+                <span>${t('evidence')}</span>
+                <span class="evidence-toggle" onclick="toggleEvidenceForm('form-${item._id}')">[${t('addEvidence')}]</span>
               </div>
 
               <div id="form-${item._id}" class="evidence-form-container" style="display:none;">
                 <div class="evidence-form-group">
-                  <label class="form-label">Evidence Type:</label>
+                  <label class="form-label">${t('evidenceType')}</label>
                   <select id="type-${item._id}" class="form-select" onchange="updateEvidenceType('${item._id}')">
-                    <option value="link">🔗 Link (Google Drive, Website, etc.)</option>
-                    <option value="file">📄 File (Upload Document)</option>
+                    <option value="link">${t('link')}</option>
+                    <option value="file">${t('file')}</option>
                   </select>
                 </div>
 
                 <div class="evidence-form-group">
-                  <label class="form-label">Title/Name:</label>
+                  <label class="form-label">${t('titleName')}</label>
                   <input type="text" id="title-${item._id}" class="form-input" placeholder="e.g., Payroll Record Q2 2026" />
                 </div>
 
                 <div class="evidence-form-group">
-                  <label class="form-label" id="input-label-${item._id}">URL:</label>
+                  <label class="form-label" id="input-label-${item._id}">${t('url')}</label>
                   <input type="url" id="link-${item._id}" class="form-input" placeholder="https://drive.google.com/..." style="display:none;" />
                   <input type="file" id="file-${item._id}" class="form-input" style="display:none;" />
                 </div>
 
                 <div class="evidence-form-group">
-                  <label class="form-label">Additional Notes:</label>
+                  <label class="form-label">${t('additionalNotes')}</label>
                   <textarea id="desc-${item._id}" class="form-textarea" placeholder="e.g., Q2 2026 wage records, verified with HR"></textarea>
                 </div>
 
-                <button class="btn-upload" onclick="uploadEvidence('${item._id}')">📤 Upload Evidence</button>
+                <button class="btn-upload" onclick="uploadEvidence('${item._id}')">${t('uploadEvidence')}</button>
               </div>
 
               <div class="evidence-display-section">
-                ${evidenceList ? `<div class="evidence-list">${evidenceList}</div>` : '<div class="no-evidence">📭 No evidence uploaded yet</div>'}
+                ${evidenceList ? `<div class="evidence-list">${evidenceList}</div>` : `<div class="no-evidence">📭 ${t('noEvidenceUploaded')}</div>`}
               </div>
             </div>
           `;
@@ -185,7 +273,7 @@ async function loadChecklist() {
 
     container.innerHTML = html;
   } catch (err) {
-    container.innerHTML = '<div class="error">Failed to load checklist. Is the server running?</div>';
+    container.innerHTML = `<div class="error">${t('failed')}</div>`;
   }
 }
 
@@ -221,11 +309,11 @@ function updateEvidenceType(itemId) {
   if (type === 'link') {
     linkInput.style.display = 'block';
     fileInput.style.display = 'none';
-    if (label) label.textContent = 'URL:';
+    if (label) label.textContent = t('url');
   } else {
     linkInput.style.display = 'none';
     fileInput.style.display = 'block';
-    if (label) label.textContent = 'Select File:';
+    if (label) label.textContent = t('selectFile');
   }
 }
 
