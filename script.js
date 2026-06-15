@@ -308,6 +308,25 @@ async function loadChecklist() {
 
               <div id="form-${item._id}" class="evidence-form-container" style="display:none;">
                 <div class="evidence-form-group">
+                  <label class="form-label">${t('evidenceType')}</label>
+                  <select id="type-${item._id}" class="form-select" onchange="updateEvidenceType('${item._id}')">
+                    <option value="link">${t('link')}</option>
+                    <option value="file">${t('file')}</option>
+                  </select>
+                </div>
+
+                <div class="evidence-form-group">
+                  <label class="form-label">${t('titleName')}</label>
+                  <input type="text" id="title-${item._id}" class="form-input" placeholder="e.g., Payroll Record Q2 2026" />
+                </div>
+
+                <div class="evidence-form-group">
+                  <label class="form-label" id="input-label-${item._id}">${t('url')}</label>
+                  <input type="url" id="link-${item._id}" class="form-input" placeholder="https://drive.google.com/..." style="display:none;" />
+                  <input type="file" id="file-${item._id}" class="form-input" style="display:none;" />
+                </div>
+
+                <div class="evidence-form-group">
                   <label class="form-label">${t('workersList')}</label>
                   <table class="workers-table" id="workers-table-${item._id}">
                     <thead>
@@ -326,25 +345,6 @@ async function loadChecklist() {
                     </tbody>
                   </table>
                   <button type="button" class="btn-add-worker" onclick="addWorkerRow('${item._id}')">${t('addWorker')}</button>
-                </div>
-
-                <div class="evidence-form-group">
-                  <label class="form-label">${t('evidenceType')}</label>
-                  <select id="type-${item._id}" class="form-select" onchange="updateEvidenceType('${item._id}')">
-                    <option value="link">${t('link')}</option>
-                    <option value="file">${t('file')}</option>
-                  </select>
-                </div>
-
-                <div class="evidence-form-group">
-                  <label class="form-label">${t('titleName')}</label>
-                  <input type="text" id="title-${item._id}" class="form-input" placeholder="e.g., Payroll Record Q2 2026" />
-                </div>
-
-                <div class="evidence-form-group">
-                  <label class="form-label" id="input-label-${item._id}">${t('url')}</label>
-                  <input type="url" id="link-${item._id}" class="form-input" placeholder="https://drive.google.com/..." style="display:none;" />
-                  <input type="file" id="file-${item._id}" class="form-input" style="display:none;" />
                 </div>
 
                 <div class="evidence-form-group">
