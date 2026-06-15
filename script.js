@@ -138,11 +138,14 @@ async function loadChecklist() {
           const newBadge = item.isNewContent
             ? '<span class="new-badge">NEW - ILO Reference</span>'
             : '';
+          const criticalBadge = item.reminder && item.reminder.includes('🚨 CRITICAL')
+            ? '<span class="critical-badge">🚨 CRITICAL</span>'
+            : '';
           const newClass = item.isNewContent ? ' new-content' : '';
           html += `<div class="checklist-item${newClass}">
             <div class="item-main">
               <span class="item-number">${item.questionNumber}.</span>
-              <span class="item-question">${item.question} ${newBadge}</span>
+              <span class="item-question">${item.question} ${newBadge} ${criticalBadge}</span>
               <span class="item-progress ${statusClass}">${statusText}</span>
               <div class="progress-bar-container">
                 <div class="progress-bar ${statusClass}" style="width: ${item.progress}%"></div>
