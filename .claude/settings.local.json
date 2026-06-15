@@ -51,7 +51,10 @@
       "Bash(node auto-generate-all-translations.js)",
       "Bash(node proper-khmer-chinese-translations.js)",
       "Bash(node complete-all-khmer-chinese.js)",
-      "Bash(node fix-all-mixed-translations.js)"
+      "Bash(node fix-all-mixed-translations.js)",
+      "Bash(node final-complete-translations.js)",
+      "Bash(node translate-audit-findings.js)",
+      "Bash(node remove-yorkmars.js)"
     ]
   }
 }
