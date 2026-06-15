@@ -52,7 +52,7 @@ const translations = {
     link: '🔗 តំណភ្ជាប់ (Google Drive, គេហទំព័រ។ល។)',
     file: '📄 ឯកសារ (បង្កើនឯកសារ)',
     titleName: 'ចំណងជើង/ឈ្មោះ:',
-    url: 'URL:',
+    url: 'តំណភ្ជាប់ (URL):',
     selectFile: 'ជ្រើសរើសឯកសារ:',
     additionalNotes: 'កំណត់ចំណាំបន្ថែម:',
     uploadEvidence: '📤 បង្កើនភស្តុតាង',
