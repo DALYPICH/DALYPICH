@@ -61,6 +61,15 @@ nav a:hover {
   font-size: 13px;
   font-weight: bold;
   transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.flag-icon {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
 }
 
 .lang-btn:hover {
