@@ -27,7 +27,7 @@ const translations = {
     failed: 'Failed to load checklist. Is the server running?'
   },
   km: {
-    welcome: 'ស្វាគមន៍មកលេខដឹង ឯកតាពិនិត្យ',
+    welcome: 'ស្វាគមន៍មក ឌីជីថល ពិនិត្យ',
     home: 'ទំព័រដើម',
     about: 'អំពី',
     contact: 'ទាក់ទង',
