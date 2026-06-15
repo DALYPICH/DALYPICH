@@ -101,7 +101,10 @@ async function loadChecklist() {
                   ${ev.description ? `<div class="evidence-item-description">${ev.description}</div>` : ''}
                   <div class="evidence-item-date">${new Date(ev.uploadedAt).toLocaleDateString()}</div>
                 </div>
-                <button class="evidence-item-delete" onclick="deleteEvidence('${item._id}', '${ev._id}')">Delete</button>
+                <div class="evidence-item-actions">
+                  <button class="evidence-item-view" onclick="viewEvidence('${ev.type}', '${ev.type === 'file' ? ev.fileUrl : ev.link}', '${ev.fileName || ev.link}')">View</button>
+                  <button class="evidence-item-delete" onclick="deleteEvidence('${item._id}', '${ev._id}')">Delete</button>
+                </div>
               </div>
             `;
           }).join('');
@@ -246,6 +249,65 @@ async function uploadEvidence(itemId) {
   } catch (err) {
     console.error('Error uploading evidence:', err);
     alert('Error uploading evidence');
+  }
+}
+
+function viewEvidence(type, url, name) {
+  if (type === 'link') {
+    window.open(url, '_blank');
+  } else {
+    // Show file preview in modal
+    const modal = document.createElement('div');
+    modal.className = 'evidence-modal';
+    modal.id = 'evidence-modal';
+
+    let content = '';
+    const fileName = name.toLowerCase();
+
+    // Check file type and show appropriate preview
+    if (fileName.match(/\.(jpg|jpeg|png|gif|bmp)$/i)) {
+      content = `<img src="${url}" alt="${name}" style="max-width: 100%; max-height: 80vh;">`;
+    } else if (fileName.match(/\.pdf$/i)) {
+      content = `<iframe src="${url}" style="width: 100%; height: 80vh; border: none;"></iframe>`;
+    } else {
+      // For other file types, show download link
+      content = `
+        <div style="text-align: center; padding: 40px;">
+          <p>📁 File: <strong>${name}</strong></p>
+          <p style="color: #7f8c8d; margin: 20px 0;">Preview not available for this file type</p>
+          <a href="${url}" download="${name}" class="evidence-download-btn">Download File</a>
+        </div>
+      `;
+    }
+
+    modal.innerHTML = `
+      <div class="evidence-modal-content">
+        <div class="evidence-modal-header">
+          <h3>${name}</h3>
+          <button class="evidence-modal-close" onclick="closeEvidenceModal()">✕</button>
+        </div>
+        <div class="evidence-modal-body">
+          ${content}
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+    modal.style.display = 'flex';
+
+    // Close modal when clicking outside
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeEvidenceModal();
+      }
+    });
+  }
+}
+
+function closeEvidenceModal() {
+  const modal = document.getElementById('evidence-modal');
+  if (modal) {
+    modal.remove();
   }
 }
 
