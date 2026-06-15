@@ -29,9 +29,23 @@ header {
   flex: 1;
 }
 
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.yai-logo {
+  width: 80px;
+  height: 80px;
+  min-width: 80px;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2));
+}
+
 header h1 {
   font-size: 24px;
   color: #f39c12;
+  margin: 0;
 }
 
 nav a {
