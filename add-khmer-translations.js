@@ -2,31 +2,31 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const ChecklistItem = require('./models/ChecklistItem');
 
-// Khmer translations for subsections, categories, and their questions/advisory content
+// Khmer translations - CLEAN KHMER TEXT ONLY
 const khmerTranslations = {
   '1.1': {
-    subsection: 'មូលមិក្ខយា និងឧបាយរចនាបច្ចេកទេស',
+    subsection: 'ចំនុចខ្លាំង និងលក្ខណៈសម្បត្តិដំណើរការ',
     categories: {
       '1.1.1': {
-        category: 'សំណួរលម្អិតលម្អិត',
+        category: 'សំណួរលម្អិត',
         questions: {
           '1.1.1.1': {
-            question: 'តើមានការអនុវត្ត ឬឈានលើវឌ្ឍនភាពល្អ ឬកម្លាំងក្នុងការផលិតកម្មរបស់工場ដែរឬទេ?',
-            commonProblems: 'ការគ្រប់គ្រងប្រហែលជាមិនរៀបpoznавать ការក្រឡេកមើលឡើងវិញ; ការប្រើប្រាស់របស់អ្នកវាយតម្លៃប្រហែលជាត្រូវបានដាក់កម្រិត; ភាពយុត្តិធម៌នៃप्रক្রিયាមិនរក្សាបាន',
-            advice: 'ឯកសារលម្អិតនូវការក្រឡេកមើលលើវឌ្ឍនភាព និងនូវការសម្រេច។ ផ្តល់ឱ្យអ្នកវាយតម្លៃនូវលទ្ធភាពដាច់ខាត ដើម្បីទទួលបាននូវព័ត៌មាន។ ផ្តល់មតិប្រកាយលម្អិត នៅលើលទ្ធផលទាំងអស់។',
-            reminder: 'ភាពយុត្តិធម៌នៃការវាយតម្លៃគឺសំខាន់។ ភាពថ្លាដ្ឋ និងការប្រឹងប្រែងក្នុងការរាយការណ៍អនុញ្ញាតឱ្យមានការកែលម្អពិតប្រាកដ។'
+            question: 'តើមានការអនុវត្តល្អ ឬឈានលើវឌ្ឍនភាព ឬកម្លាំងសំខាន់ក្នុងរោងចក្រដែរឬទេ?',
+            commonProblems: 'ការគ្រប់គ្រងប្រហែលជាមិនស្គាល់ការកែលម្អទេ។ អ្នកវាយតម្លៃប្រហែលជាមិនបានទទួលលទ្ធភាពលម្អិតទេ។ ភាពទាក់ទងក្នុងដំណើរការមិនរក្សាឡើយ។',
+            advice: 'ឯកសារលម្អិតនូវការកែលម្អទាំងអស់។ ផ្តល់ឱ្យអ្នកវាយតម្លៃលទ្ធភាពពេញលេញ។ ប្រឹងប្រែងឱ្យមានភាពស្មោះត្រង់ក្នុងរាយការណ៍។',
+            reminder: 'ភាពស្មោះត្រង់របស់ការវាយតម្លៃគឺសំខាន់។ ភាពថ្លាដ្ឋលម្អិតនឹងជួយក្នុងការកែលម្អ។'
           },
           '1.1.1.2': {
-            question: 'តើការទស្សនាចូលរបស់អ្នកវាយតម្លៃលម្អិតទៅក្រុមហ៊ុនរបស់អ្នកបានដែរឬទេ?',
-            commonProblems: 'ការគ្រប់គ្រងប្រហែលជាមិនរៀបរៀង ការក្រឡេកមើលឡើងវិញ; ការប្រើប្រាស់របស់អ្នកវាយតម្លៃប្រហែលជាត្រូវបានដាក់កម្រិត; ភាពយុត្តិធម៌នៃ processo មិនរក្សាបាន',
-            advice: 'ឯកសារលម្អិតនូវការក្រឡេកមើលលើវឌ្ឍនភាព និងនូវការសម្រេច។ ផ្តល់ឱ្យអ្នកវាយតម្លៃនូវលទ្ធភាពដាច់ខាត។ រាយការណ៍ដោយ誠実នៃលទ្ធផលទាំងអស់។',
-            reminder: 'ភាពយុត្តិធម៌នៃការវាយតម្លៃមានសារៈសំខាន់ក្នុងការកែលម្អ។'
+            question: 'តើអ្នកវាយតម្លៃបានទទួលលទ្ធភាពក្នុងក្រុមហ៊ុនដែរឬទេ?',
+            commonProblems: 'ការគ្រប់គ្រងប្រហែលជាមិនបានអនុញ្ញាតឱ្យមាននូវលទ្ធភាពពេញលេញទេ។ អ្នកវាយតម្លៃប្រហែលជាមិនបានទទួលលទ្ធភាពលម្អិតក្នុងតំបន់ទាំងអស់ទេ។',
+            advice: 'អនុញ្ញាតឱ្យអ្នកវាយតម្លៃផ្លាស់ទីលម្អិត។ ផ្តល់ឱ្យលទ្ធភាពលម្អិតឱ្យឯង។ ប្រឹងប្រែងឱ្យមានភាពលម្អិតក្នុងរាយការណ៍។',
+            reminder: 'លទ្ធភាពលម្អិតរបស់អ្នកវាយតម្លៃគឺសំខាន់។'
           },
           '1.1.1.3': {
-            question: 'តើឯកសារលម្អិតបានផ្តល់ជូនក្នុងមិនយូរប៉ុន្មានដែរឬទេ?',
-            commonProblems: 'ការគ្រប់គ្រងប្រហែលជាមិនរៀបរៀង ការក្រឡេកមើលឡើងវិញ; ឯកសារលម្អិតប្រហែលជាមិនបានផ្តល់ឱ្យក្នុងរយៈពេលសមស្របនោះ',
-            advice: 'ផ្តល់ឱ្យឯកសារលម្អិតក្នុងរយៈពេលសមស្របដូច្នេះ។ រៀបចំឯកសារលម្អិតជាមុនដើម្បីលើកលែងពីការហាក់ប្រឡាក់',
-            reminder: 'ឯកសារលម្អិតក្នុងរយៈពេលសមស្របជួយលើកលែងការសង្ស័យ।'
+            question: 'តើឯកសារលម្អិតបានផ្តល់ជូនក្នុងរយៈពេលសមស្របដែរឬទេ?',
+            commonProblems: 'ឯកសារលម្អិតប្រហែលជាលក្ខណៈពិសេស។ រយៈពេលមិនគ្រប់គ្រាន់ដែលផ្តល់ឱ្យលម្អិត។',
+            advice: 'ផ្តល់ឱ្យឯកសារលម្អិតមុនពេលវេលា។ រៀបចំលម្អិតដោយលម្អិត។',
+            reminder: 'រយៈពេលសមស្របលម្អិតគឺសំខាន់។'
           }
         }
       }
@@ -44,7 +44,6 @@ async function addKhmerTranslations() {
 
     // Process all subsections
     for (const [subNum, subData] of Object.entries(khmerTranslations)) {
-      // Update subsection translations
       const subItems = await ChecklistItem.find({ subsectionNumber: subNum });
       console.log(`Found ${subItems.length} items in subsection ${subNum}`);
 
@@ -56,15 +55,12 @@ async function addKhmerTranslations() {
           item.translations.km = {};
         }
 
-        // Set subsection translation
         item.translations.km.subsection = subData.subsection;
 
-        // Check if there's a category translation
         if (subData.categories[item.categoryNumber]) {
           const catData = subData.categories[item.categoryNumber];
           item.translations.km.category = catData.category;
 
-          // Check if there's a question translation
           if (catData.questions[item.questionNumber]) {
             const qData = catData.questions[item.questionNumber];
             item.translations.km.question = qData.question;
@@ -79,7 +75,7 @@ async function addKhmerTranslations() {
       }
     }
 
-    console.log(`✅ Updated ${updated} items with Khmer translations`);
+    console.log(`✅ Updated ${updated} items with clean Khmer translations`);
     await mongoose.connection.close();
   } catch (err) {
     console.error('❌ Error:', err.message);
