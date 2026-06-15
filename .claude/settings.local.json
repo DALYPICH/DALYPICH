@@ -34,7 +34,9 @@
       "Bash(node apply-comprehensive-advice.js)",
       "Bash(node enrich-seed-data.js)",
       "Bash(node add-advice-to-db.js)",
-      "Bash(git commit *)"
+      "Bash(git commit *)",
+      "Bash(git fetch *)",
+      "Bash(git remote *)"
     ]
   }
 }

@@ -30,4 +30,38 @@ router.put('/:id', async (req, res) => {
   res.json(item);
 });
 
+router.post('/:id/evidence', async (req, res) => {
+  const { type, title, link, description, fileName, fileUrl } = req.body;
+  const item = await ChecklistItem.findById(req.params.id);
+  if (!item) return res.status(404).json({ error: 'Item not found' });
+
+  const evidence = {
+    type,
+    title,
+    description,
+    uploadedAt: new Date(),
+    uploadedBy: 'User'
+  };
+
+  if (type === 'link') {
+    evidence.link = link;
+  } else if (type === 'file') {
+    evidence.fileName = fileName;
+    evidence.fileUrl = fileUrl;
+  }
+
+  item.evidence.push(evidence);
+  await item.save();
+  res.json(item);
+});
+
+router.delete('/:id/evidence/:evidenceId', async (req, res) => {
+  const item = await ChecklistItem.findById(req.params.id);
+  if (!item) return res.status(404).json({ error: 'Item not found' });
+
+  item.evidence = item.evidence.filter(e => e._id.toString() !== req.params.evidenceId);
+  await item.save();
+  res.json(item);
+});
+
 module.exports = router;

@@ -288,3 +288,164 @@ footer {
   bottom: 0;
   width: 100%;
 }
+
+.evidence-section {
+  margin-top: 12px;
+  padding: 12px;
+  background-color: #f9f9f9;
+  border-left: 3px solid #3498db;
+  border-radius: 4px;
+}
+
+.evidence-header {
+  font-weight: bold;
+  color: #2c3e50;
+  font-size: 13px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.evidence-icon {
+  color: #3498db;
+}
+
+.evidence-upload-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.evidence-upload-form input,
+.evidence-upload-form select,
+.evidence-upload-form textarea {
+  padding: 6px 8px;
+  font-size: 12px;
+  border: 1px solid #bdc3c7;
+  border-radius: 3px;
+  font-family: Arial, sans-serif;
+}
+
+.evidence-upload-form input[type="text"],
+.evidence-upload-form input[type="url"],
+.evidence-upload-form input[type="file"],
+.evidence-upload-form select {
+  flex: 1;
+  min-width: 120px;
+}
+
+.evidence-upload-form textarea {
+  width: 100%;
+  min-height: 40px;
+  resize: vertical;
+}
+
+.evidence-upload-form button {
+  padding: 6px 12px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.evidence-upload-form button:hover {
+  background-color: #2980b9;
+}
+
+.evidence-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.evidence-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 8px;
+  background-color: white;
+  border: 1px solid #ecf0f1;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+.evidence-item-content {
+  flex: 1;
+}
+
+.evidence-item-title {
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 2px;
+}
+
+.evidence-item-type {
+  display: inline-block;
+  font-size: 10px;
+  padding: 2px 6px;
+  background-color: #ecf0f1;
+  border-radius: 2px;
+  margin-right: 6px;
+  color: #7f8c8d;
+}
+
+.evidence-item-type.file {
+  background-color: #e8f8f5;
+  color: #16a085;
+}
+
+.evidence-item-type.link {
+  background-color: #fef5e7;
+  color: #d68910;
+}
+
+.evidence-item-description {
+  color: #7f8c8d;
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+.evidence-item-link {
+  color: #3498db;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.evidence-item-link:hover {
+  text-decoration: underline;
+}
+
+.evidence-item-date {
+  color: #95a5a6;
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+.evidence-item-delete {
+  padding: 4px 8px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 11px;
+  margin-left: 8px;
+  white-space: nowrap;
+}
+
+.evidence-item-delete:hover {
+  background-color: #c0392b;
+}
+
+.evidence-toggle {
+  cursor: pointer;
+  color: #3498db;
+  font-weight: bold;
+  font-size: 12px;
+  margin-left: 4px;
+}

@@ -20,6 +20,16 @@ const checklistItemSchema = new mongoose.Schema({
   advice: { type: String, default: '' },
   reminder: { type: String, default: '' },
   relatedCAT: { type: [String], default: [] },
+  evidence: [{
+    type: { type: String, enum: ['file', 'link'], required: true },
+    title: { type: String, default: '' },
+    fileUrl: { type: String, default: '' },
+    fileName: { type: String, default: '' },
+    link: { type: String, default: '' },
+    description: { type: String, default: '' },
+    uploadedAt: { type: Date, default: Date.now },
+    uploadedBy: { type: String, default: 'User' }
+  }]
 }, { timestamps: true });
 
 module.exports = mongoose.model('ChecklistItem', checklistItemSchema);
