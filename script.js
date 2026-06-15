@@ -208,6 +208,40 @@ function updateEvidenceType(itemId) {
   }
 }
 
+async function calculateProgressFromEvidence(itemId) {
+  try {
+    const res = await fetch(`/api/checklist/${itemId}`);
+    const item = await res.json();
+
+    // Calculate progress based on evidence
+    let progress = 0;
+    let completed = 0;
+
+    if (item.evidence && item.evidence.length > 0) {
+      progress = 50; // Evidence uploaded = 50%
+      completed = 0;
+    }
+
+    // Update the item with new progress
+    const updateRes = await fetch(`/api/checklist/${itemId}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        progress: progress,
+        completed: completed,
+        total: 1
+      })
+    });
+
+    if (updateRes.ok) {
+      return true;
+    }
+  } catch (err) {
+    console.error('Error calculating progress:', err);
+  }
+  return false;
+}
+
 async function uploadEvidence(itemId) {
   const type = document.getElementById(`type-${itemId}`).value;
   const title = document.getElementById(`title-${itemId}`).value;
@@ -248,6 +282,7 @@ async function uploadEvidence(itemId) {
         });
 
         if (res.ok) {
+          await calculateProgressFromEvidence(itemId);
           loadChecklist();
         } else {
           alert('Failed to upload evidence');
@@ -264,6 +299,7 @@ async function uploadEvidence(itemId) {
     });
 
     if (res.ok) {
+      await calculateProgressFromEvidence(itemId);
       loadChecklist();
     } else {
       alert('Failed to upload evidence');
@@ -342,6 +378,7 @@ async function deleteEvidence(itemId, evidenceId) {
     });
 
     if (res.ok) {
+      await calculateProgressFromEvidence(itemId);
       loadChecklist();
     } else {
       alert('Failed to delete evidence');
