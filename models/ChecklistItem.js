@@ -32,6 +32,18 @@ const checklistItemSchema = new mongoose.Schema({
       commonProblems: { type: String, default: '' },
       advice: { type: String, default: '' },
       reminder: { type: String, default: '' }
+    },
+    zh: {
+      section: { type: String, default: '' },
+      subsection: { type: String, default: '' },
+      category: { type: String, default: '' },
+      question: { type: String, default: '' },
+      legalReference: { type: String, default: '' },
+      compliancePoint: { type: String, default: '' },
+      auditFindings: { type: String, default: '' },
+      commonProblems: { type: String, default: '' },
+      advice: { type: String, default: '' },
+      reminder: { type: String, default: '' }
     }
   },
   evidence: [{
