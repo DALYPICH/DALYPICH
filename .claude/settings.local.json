@@ -42,7 +42,16 @@
       "Bash(node reset-progress.js)",
       "Bash(node add-khmer-translations.js)",
       "Bash(node add-chinese-translations.js)",
-      "Bash(node verify-chinese.js)"
+      "Bash(node verify-chinese.js)",
+      "Bash(node update-all-translations.js)",
+      "Bash(git push *)",
+      "Bash(Start-Sleep -Milliseconds 2000)",
+      "Bash(node complete-question-translations.js)",
+      "Bash(node fill-all-question-translations.js)",
+      "Bash(node auto-generate-all-translations.js)",
+      "Bash(node proper-khmer-chinese-translations.js)",
+      "Bash(node complete-all-khmer-chinese.js)",
+      "Bash(node fix-all-mixed-translations.js)"
     ]
   }
 }
