@@ -39,7 +39,10 @@
       "Bash(git remote *)",
       "Bash(node update-section-numbers.js)",
       "Bash(node populate-all-advice.js)",
-      "Bash(node reset-progress.js)"
+      "Bash(node reset-progress.js)",
+      "Bash(node add-khmer-translations.js)",
+      "Bash(node add-chinese-translations.js)",
+      "Bash(node verify-chinese.js)"
     ]
   }
 }
