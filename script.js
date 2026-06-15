@@ -44,11 +44,13 @@ async function loadChecklist() {
       const subTotal = subItems.length;
       const subPercent = Math.round((subCompleted / subTotal) * 100);
 
-      html += `<div class="subsection-header">
+      html += `<div class="subsection-header" onclick="toggleSubsection('sub-${sub.number}')" style="cursor: pointer;">
+        <span class="subsection-toggle">▼</span>
         <span class="subsection-number">${sub.number}.</span>
         <span class="subsection-title">${sub.title}</span>
         <span class="subsection-progress">${subPercent}% (${subCompleted} / ${subTotal})</span>
-      </div>`;
+      </div>
+      <div id="sub-${sub.number}" class="subsection-content" style="display: block;">`;
 
       Object.values(sub.categories).forEach(cat => {
         const catCompleted = cat.items.filter(i => i.progress === 100).length;
@@ -157,11 +159,28 @@ async function loadChecklist() {
         });
         html += '</div>';
       });
+      html += '</div>'; // Close subsection-content
     });
 
     container.innerHTML = html;
   } catch (err) {
     container.innerHTML = '<div class="error">Failed to load checklist. Is the server running?</div>';
+  }
+}
+
+function toggleSubsection(subsectionId) {
+  const content = document.getElementById(subsectionId);
+  const header = content.previousElementSibling;
+  const toggle = header.querySelector('.subsection-toggle');
+
+  if (content.style.display === 'none') {
+    content.style.display = 'block';
+    toggle.textContent = '▼';
+    toggle.style.transform = 'rotate(0deg)';
+  } else {
+    content.style.display = 'none';
+    toggle.textContent = '▶';
+    toggle.style.transform = 'rotate(0deg)';
   }
 }
 
