@@ -7,8 +7,10 @@ const translations = {
     contact: 'Contact',
     loading: 'Loading checklist...',
     noItems: 'No checklist items found.',
-    commonProblems: 'Common Problems:',
-    advice: 'Advice:',
+    commonProblemsLabel: 'Common Problems:',
+    adviceLabel: 'Advice:',
+    auditFindingsLabel: 'Audit Finding:',
+    reminderLabel: 'Reminder:',
     evidence: 'Evidence & Documentation',
     addEvidence: '+ Add Evidence',
     noEvidenceUploaded: 'No evidence uploaded yet',
@@ -31,8 +33,10 @@ const translations = {
     contact: 'ទាក់ទង',
     loading: 'កំពុងផ្ទុកបញ្ជីពិនិត្យ...',
     noItems: 'រកមិនឃើញធាតុបញ្ជីពិនិត្យ។',
-    commonProblems: 'បញ្ហាទូទៅ:',
-    advice: 'ដំបូន្មាន:',
+    commonProblemsLabel: 'បញ្ហាទូទៅ:',
+    adviceLabel: 'ដំបូន្មាន:',
+    auditFindingsLabel: 'ការស្វាគមន៍ឡើងវិញ៖',
+    reminderLabel: 'ការរំលឹក៖',
     evidence: 'ភស្តុតាង និងឯកសារ',
     addEvidence: '+ បន្ថែមភស្តុតាង',
     noEvidenceUploaded: 'មិនមានភស្តុតាងដែលបានផ្ទុកឡើងនៅឡើយ',
@@ -164,16 +168,16 @@ async function loadChecklist() {
             ? `<div class="compliance-point">${item.compliancePoint}</div>`
             : '';
           const auditHtml = item.auditFindings
-            ? `<div class="audit-findings"><div class="audit-findings-label">🔍 Audit Finding:</div>${item.auditFindings}</div>`
+            ? `<div class="audit-findings"><div class="audit-findings-label">🔍 ${t('auditFindingsLabel')}</div>${item.auditFindings}</div>`
             : '';
           const commonProblemsHtml = item.commonProblems
-            ? `<div class="common-problems"><strong>Common Problems:</strong> ${item.commonProblems}</div>`
+            ? `<div class="common-problems"><strong>${t('commonProblemsLabel')}</strong> ${item.commonProblems}</div>`
             : '';
           const adviceHtml = item.advice
-            ? `<div class="advice"><div class="advice-label">💡 Advice:</div>${item.advice}</div>`
+            ? `<div class="advice"><div class="advice-label">💡 ${t('adviceLabel')}</div>${item.advice}</div>`
             : '';
           const reminderHtml = item.reminder
-            ? `<div class="reminder">${item.reminder}</div>`
+            ? `<div class="reminder"><div style="font-weight: bold; margin-bottom: 4px;">📌 ${t('reminderLabel')}</div>${item.reminder}</div>`
             : '';
 
           // Evidence section
@@ -192,8 +196,8 @@ async function loadChecklist() {
                   <div class="evidence-item-date">${new Date(ev.uploadedAt).toLocaleDateString()}</div>
                 </div>
                 <div class="evidence-item-actions">
-                  <button class="evidence-item-view" onclick="viewEvidence('${ev.type}', '${ev.type === 'file' ? ev.fileUrl : ev.link}', '${ev.fileName || ev.link}')">View</button>
-                  <button class="evidence-item-delete" onclick="deleteEvidence('${item._id}', '${ev._id}')">Delete</button>
+                  <button class="evidence-item-view" onclick="viewEvidence('${ev.type}', '${ev.type === 'file' ? ev.fileUrl : ev.link}', '${ev.fileName || ev.link}')">${t('view')}</button>
+                  <button class="evidence-item-delete" onclick="deleteEvidence('${item._id}', '${ev._id}')">${t('delete')}</button>
                 </div>
               </div>
             `;
