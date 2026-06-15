@@ -22,6 +22,8 @@ const translations = {
     selectFile: 'Select File:',
     additionalNotes: 'Additional Notes:',
     uploadEvidence: '📤 Upload Evidence',
+    workersList: 'Worker(s) Related:',
+    selectWorker: 'Select worker(s)...',
     view: 'View',
     delete: 'Delete',
     failed: 'Failed to load checklist. Is the server running?'
@@ -48,6 +50,8 @@ const translations = {
     selectFile: 'ជ្រើសរើសឯកសារ:',
     additionalNotes: 'កំណត់ចំណាំបន្ថែម:',
     uploadEvidence: '📤 បង្កើនភស្តុតាង',
+    workersList: 'កម្មករដែលពាក់ព័ន្ធ:',
+    selectWorker: 'ជ្រើសរើសកម្មករ...',
     view: 'មើល',
     delete: 'លុប',
     failed: 'បរាជ័យក្នុងការផ្ទុកបញ្ជីពិនិត្យ។ តើម៉ាស៊ីនមេកំពុងដំណើរការឬទេ?'
@@ -74,6 +78,8 @@ const translations = {
     selectFile: '选择文件:',
     additionalNotes: '其他说明:',
     uploadEvidence: '📤 上传证据',
+    workersList: '相关工人:',
+    selectWorker: '选择工人...',
     view: '查看',
     delete: '删除',
     failed: '加载检查表失败。服务器是否在运行？'
@@ -235,6 +241,7 @@ async function loadChecklist() {
                 <div class="evidence-item-content">
                   <div class="evidence-item-type ${ev.type}">${typeLabel}</div>
                   <div class="evidence-item-title">${ev.title}</div>
+                  ${ev.workers ? `<div class="evidence-item-workers"><strong>👥 ${t('workersList')}</strong> ${ev.workers}</div>` : ''}
                   <div>${content}</div>
                   ${ev.description ? `<div class="evidence-item-description">${ev.description}</div>` : ''}
                   <div class="evidence-item-date">${new Date(ev.uploadedAt).toLocaleDateString()}</div>
@@ -256,6 +263,11 @@ async function loadChecklist() {
               </div>
 
               <div id="form-${item._id}" class="evidence-form-container" style="display:none;">
+                <div class="evidence-form-group">
+                  <label class="form-label">${t('workersList')}</label>
+                  <input type="text" id="workers-${item._id}" class="form-input" placeholder="${t('selectWorker')}" />
+                </div>
+
                 <div class="evidence-form-group">
                   <label class="form-label">${t('evidenceType')}</label>
                   <select id="type-${item._id}" class="form-select" onchange="updateEvidenceType('${item._id}')">
@@ -403,6 +415,7 @@ async function uploadEvidence(itemId) {
   const type = document.getElementById(`type-${itemId}`).value;
   const title = document.getElementById(`title-${itemId}`).value;
   const description = document.getElementById(`desc-${itemId}`).value;
+  const workers = document.getElementById(`workers-${itemId}`).value;
 
   if (!title) {
     alert('Please enter a title for the evidence');
@@ -410,7 +423,7 @@ async function uploadEvidence(itemId) {
   }
 
   try {
-    let payload = { type, title, description };
+    let payload = { type, title, description, workers };
 
     if (type === 'link') {
       const link = document.getElementById(`link-${itemId}`).value;

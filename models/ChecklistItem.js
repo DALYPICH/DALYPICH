@@ -53,6 +53,7 @@ const checklistItemSchema = new mongoose.Schema({
     fileName: { type: String, default: '' },
     link: { type: String, default: '' },
     description: { type: String, default: '' },
+    workers: { type: String, default: '' },
     uploadedAt: { type: Date, default: Date.now },
     uploadedBy: { type: String, default: 'User' }
   }]
