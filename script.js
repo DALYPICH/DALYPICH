@@ -105,6 +105,9 @@ function getTranslated(item, field) {
   if (currentLanguage === 'km' && item.translations && item.translations.km && item.translations.km[field]) {
     return item.translations.km[field];
   }
+  if (currentLanguage === 'zh' && item.translations && item.translations.zh && item.translations.zh[field]) {
+    return item.translations.zh[field];
+  }
   return item[field] || '';
 }
 
