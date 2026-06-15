@@ -51,10 +51,36 @@ const translations = {
     view: 'មើល',
     delete: 'លុប',
     failed: 'បរាជ័យក្នុងការផ្ទុកបញ្ជីពិនិត្យ។ តើម៉ាស៊ីនមេកំពុងដំណើរការឬទេ?'
+  },
+  zh: {
+    welcome: '欢迎来到 DALYPICH',
+    home: '主页',
+    about: '关于',
+    contact: '联系',
+    loading: '正在加载检查表...',
+    noItems: '未找到检查表项目。',
+    commonProblemsLabel: '常见问题:',
+    adviceLabel: '建议:',
+    auditFindingsLabel: '审计发现:',
+    reminderLabel: '提醒:',
+    evidence: '证据和文档',
+    addEvidence: '+ 添加证据',
+    noEvidenceUploaded: '尚未上传证据',
+    evidenceType: '证据类型:',
+    link: '🔗 链接 (Google Drive, 网站等)',
+    file: '📄 文件 (上传文档)',
+    titleName: '标题/名称:',
+    url: '网址:',
+    selectFile: '选择文件:',
+    additionalNotes: '其他说明:',
+    uploadEvidence: '📤 上传证据',
+    view: '查看',
+    delete: '删除',
+    failed: '加载检查表失败。服务器是否在运行？'
   }
 };
 
-let currentLanguage = localStorage.getItem('language') || 'en';
+let currentLanguage = localStorage.getItem('language') || 'km';
 
 function changeLanguage(lang) {
   currentLanguage = lang;
