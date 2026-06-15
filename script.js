@@ -22,8 +22,14 @@ const translations = {
     selectFile: 'Select File:',
     additionalNotes: 'Additional Notes:',
     uploadEvidence: '📤 Upload Evidence',
-    workersList: 'Worker(s) Related:',
+    workersList: 'Worker(s) Related (Optional):',
     selectWorker: 'Select worker(s)...',
+    workerName: 'Name',
+    workerSex: 'Sex',
+    workerPosition: 'Position',
+    workerDepartment: 'Department',
+    addWorker: '+ Add Worker',
+    removeWorker: 'Remove',
     view: 'View',
     delete: 'Delete',
     failed: 'Failed to load checklist. Is the server running?'
@@ -50,8 +56,14 @@ const translations = {
     selectFile: 'ជ្រើសរើសឯកសារ:',
     additionalNotes: 'កំណត់ចំណាំបន្ថែម:',
     uploadEvidence: '📤 បង្កើនភស្តុតាង',
-    workersList: 'កម្មករដែលពាក់ព័ន្ធ:',
+    workersList: 'កម្មករដែលពាក់ព័ន្ធ (ស្ម័គ្រច្ឆន្দ):',
     selectWorker: 'ជ្រើសរើសកម្មករ...',
+    workerName: 'ឈ្មោះ',
+    workerSex: 'ភេទ',
+    workerPosition: 'មុខតំណែង',
+    workerDepartment: 'នាយកដ្ឋាន',
+    addWorker: '+ បន្ថែមកម្មករ',
+    removeWorker: 'ដកចេញ',
     view: 'មើល',
     delete: 'លុប',
     failed: 'បរាជ័យក្នុងការផ្ទុកបញ្ជីពិនិត្យ។ តើម៉ាស៊ីនមេកំពុងដំណើរការឬទេ?'
@@ -78,8 +90,14 @@ const translations = {
     selectFile: '选择文件:',
     additionalNotes: '其他说明:',
     uploadEvidence: '📤 上传证据',
-    workersList: '相关工人:',
+    workersList: '相关工人(可选):',
     selectWorker: '选择工人...',
+    workerName: '名称',
+    workerSex: '性别',
+    workerPosition: '职位',
+    workerDepartment: '部门',
+    addWorker: '+ 添加工人',
+    removeWorker: '删除',
     view: '查看',
     delete: '删除',
     failed: '加载检查表失败。服务器是否在运行？'
@@ -236,12 +254,38 @@ async function loadChecklist() {
             const content = ev.type === 'file'
               ? `<a href="${ev.fileUrl}" target="_blank" class="evidence-item-link">${ev.fileName}</a>`
               : `<a href="${ev.link}" target="_blank" class="evidence-item-link">${ev.link}</a>`;
+
+            let workersHtml = '';
+            if (ev.workers) {
+              try {
+                const workersData = JSON.parse(ev.workers);
+                if (Array.isArray(workersData) && workersData.length > 0) {
+                  const workerRows = workersData.map(w => `<tr><td>${w.name || '-'}</td><td>${w.sex || '-'}</td><td>${w.position || '-'}</td><td>${w.department || '-'}</td></tr>`).join('');
+                  workersHtml = `<div class="evidence-item-workers" style="margin-top: 8px;">
+                    <strong>👥 ${t('workersList')}</strong>
+                    <table class="workers-display-table" style="margin-top: 4px;">
+                      <tr style="background-color: #ecf0f1;">
+                        <th>${t('workerName')}</th>
+                        <th>${t('workerSex')}</th>
+                        <th>${t('workerPosition')}</th>
+                        <th>${t('workerDepartment')}</th>
+                      </tr>
+                      ${workerRows}
+                    </table>
+                  </div>`;
+                }
+              } catch (e) {
+                // If not valid JSON, treat as simple string
+                workersHtml = `<div class="evidence-item-workers"><strong>👥 ${t('workersList')}</strong> ${ev.workers}</div>`;
+              }
+            }
+
             return `
               <div class="evidence-item">
                 <div class="evidence-item-content">
                   <div class="evidence-item-type ${ev.type}">${typeLabel}</div>
                   <div class="evidence-item-title">${ev.title}</div>
-                  ${ev.workers ? `<div class="evidence-item-workers"><strong>👥 ${t('workersList')}</strong> ${ev.workers}</div>` : ''}
+                  ${workersHtml}
                   <div>${content}</div>
                   ${ev.description ? `<div class="evidence-item-description">${ev.description}</div>` : ''}
                   <div class="evidence-item-date">${new Date(ev.uploadedAt).toLocaleDateString()}</div>
@@ -265,7 +309,23 @@ async function loadChecklist() {
               <div id="form-${item._id}" class="evidence-form-container" style="display:none;">
                 <div class="evidence-form-group">
                   <label class="form-label">${t('workersList')}</label>
-                  <input type="text" id="workers-${item._id}" class="form-input" placeholder="${t('selectWorker')}" />
+                  <table class="workers-table" id="workers-table-${item._id}">
+                    <thead>
+                      <tr>
+                        <th>${t('workerName')}</th>
+                        <th>${t('workerSex')}</th>
+                        <th>${t('workerPosition')}</th>
+                        <th>${t('workerDepartment')}</th>
+                        <th style="width: 60px;">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="workers-tbody-${item._id}">
+                      <tr class="empty-row">
+                        <td colspan="5" style="text-align: center; color: #95a5a6;">No workers added yet</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <button type="button" class="btn-add-worker" onclick="addWorkerRow('${item._id}')">${t('addWorker')}</button>
                 </div>
 
                 <div class="evidence-form-group">
@@ -411,11 +471,63 @@ async function calculateProgressFromEvidence(itemId) {
   return false;
 }
 
+function addWorkerRow(itemId) {
+  const tbody = document.getElementById(`workers-tbody-${itemId}`);
+  const emptyRow = tbody.querySelector('.empty-row');
+  if (emptyRow) {
+    emptyRow.remove();
+  }
+
+  const row = document.createElement('tr');
+  row.className = 'worker-row';
+  row.innerHTML = `
+    <td><input type="text" class="worker-input" placeholder="e.g., John Doe" /></td>
+    <td><input type="text" class="worker-input" placeholder="M/F" style="max-width: 60px;" /></td>
+    <td><input type="text" class="worker-input" placeholder="Sewing Operator" /></td>
+    <td><input type="text" class="worker-input" placeholder="Production" /></td>
+    <td><button type="button" class="btn-remove-worker" onclick="removeWorkerRow(this)">${t('removeWorker')}</button></td>
+  `;
+  tbody.appendChild(row);
+}
+
+function removeWorkerRow(btn) {
+  const tbody = btn.closest('tbody');
+  btn.closest('tr').remove();
+
+  // Show empty message if no workers
+  if (tbody.querySelectorAll('.worker-row').length === 0) {
+    const emptyRow = document.createElement('tr');
+    emptyRow.className = 'empty-row';
+    emptyRow.innerHTML = `<td colspan="5" style="text-align: center; color: #95a5a6;">No workers added yet</td>`;
+    tbody.appendChild(emptyRow);
+  }
+}
+
+function collectWorkerData(itemId) {
+  const workers = [];
+  const tbody = document.getElementById(`workers-tbody-${itemId}`);
+  const rows = tbody.querySelectorAll('.worker-row');
+
+  rows.forEach(row => {
+    const inputs = row.querySelectorAll('.worker-input');
+    const name = inputs[0].value.trim();
+    const sex = inputs[1].value.trim();
+    const position = inputs[2].value.trim();
+    const department = inputs[3].value.trim();
+
+    if (name) {
+      workers.push({ name, sex, position, department });
+    }
+  });
+
+  return workers.length > 0 ? JSON.stringify(workers) : '';
+}
+
 async function uploadEvidence(itemId) {
   const type = document.getElementById(`type-${itemId}`).value;
   const title = document.getElementById(`title-${itemId}`).value;
   const description = document.getElementById(`desc-${itemId}`).value;
-  const workers = document.getElementById(`workers-${itemId}`).value;
+  const workers = collectWorkerData(itemId);
 
   if (!title) {
     alert('Please enter a title for the evidence');

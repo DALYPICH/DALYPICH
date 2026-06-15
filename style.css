@@ -506,6 +506,83 @@ footer {
   background-color: #2980b9;
 }
 
+.workers-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+  border: 1px solid #ecf0f1;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.workers-table thead {
+  background-color: #ecf0f1;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.workers-table th {
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 1px solid #bdc3c7;
+}
+
+.workers-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.worker-input {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid #bdc3c7;
+  border-radius: 3px;
+  font-size: 12px;
+  font-family: inherit;
+}
+
+.worker-input:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 4px rgba(52, 152, 219, 0.3);
+}
+
+.btn-add-worker {
+  padding: 8px 12px;
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.btn-add-worker:hover {
+  background-color: #229954;
+}
+
+.btn-remove-worker {
+  padding: 4px 8px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 11px;
+  width: 100%;
+}
+
+.btn-remove-worker:hover {
+  background-color: #c0392b;
+}
+
+.empty-row {
+  background-color: #f9f9f9;
+}
+
 .evidence-display-section {
   margin-top: 12px;
 }
@@ -591,10 +668,30 @@ footer {
 .evidence-item-workers {
   color: #2c3e50;
   font-size: 12px;
-  margin: 4px 0;
-  padding: 4px 0;
+  margin: 8px 0;
+  padding: 8px;
   border-left: 3px solid #3498db;
   padding-left: 8px;
+  background-color: #f0f8ff;
+}
+
+.workers-display-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+
+.workers-display-table th {
+  padding: 4px;
+  background-color: #ecf0f1;
+  border: 1px solid #bdc3c7;
+  text-align: left;
+  font-weight: 600;
+}
+
+.workers-display-table td {
+  padding: 4px;
+  border: 1px solid #bdc3c7;
 }
 
 .evidence-item-delete {
