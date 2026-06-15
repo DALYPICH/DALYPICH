@@ -116,7 +116,7 @@ function updatePageText() {
   document.querySelectorAll('nav a')[0].textContent = t('home');
   document.querySelectorAll('nav a')[1].textContent = t('about');
   document.querySelectorAll('nav a')[2].textContent = t('contact');
-  document.querySelector('footer p').textContent = `© 2026 DALYPICH. All rights reserved.`;
+  document.querySelector('footer p').textContent = `© 2026 YAIKH.COM. All rights reserved.`;
 }
 
 // Set initial language
