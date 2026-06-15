@@ -37,7 +37,8 @@
       "Bash(git commit *)",
       "Bash(git fetch *)",
       "Bash(git remote *)",
-      "Bash(node update-section-numbers.js)"
+      "Bash(node update-section-numbers.js)",
+      "Bash(node populate-all-advice.js)"
     ]
   }
 }
