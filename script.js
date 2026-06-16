@@ -12,7 +12,7 @@ const translations = {
     auditFindingsLabel: 'Audit Finding:',
     reminderLabel: 'Reminder:',
     evidence: 'Evidence & Documentation',
-    addEvidence: '+ Add Evidence',
+    addEvidence: 'Add Reference',
     noEvidenceUploaded: 'No evidence uploaded yet',
     evidenceType: 'Evidence Type:',
     link: '🔗 Link (Google Drive, Website, etc.)',
@@ -46,7 +46,7 @@ const translations = {
     auditFindingsLabel: 'ការស្វាគមន៍ឡើងវិញ៖',
     reminderLabel: 'ការរំលឹក៖',
     evidence: 'ភស្តុតាង និងឯកសារ',
-    addEvidence: '+ បន្ថែមភស្តុតាង',
+    addEvidence: 'បន្ថែមឯកសារយោង',
     noEvidenceUploaded: 'មិនមានភស្តុតាងដែលបានផ្ទុកឡើងនៅឡើយ',
     evidenceType: 'ប្រភេទភស្តុតាង:',
     link: '🔗 តំណភ្ជាប់ (Google Drive, គេហទំព័រ។ល។)',
@@ -84,7 +84,7 @@ const translations = {
     auditFindingsLabel: '审计发现:',
     reminderLabel: '提醒:',
     evidence: '证据和文档',
-    addEvidence: '+ 添加证据',
+    addEvidence: '添加参考',
     noEvidenceUploaded: '尚未上传证据',
     evidenceType: '证据类型:',
     link: '🔗 链接 (Google Drive, 网站等)',
@@ -323,9 +323,10 @@ async function loadChecklist() {
                 </div>
                 <div style="display: flex; align-items: center; gap: 12px;">
                   ${statusBadge}
-                  <span class="evidence-toggle" onclick="toggleEvidenceForm('form-${item._id}')" style="cursor: pointer; color: #3182ce; font-weight: 600; font-size: 12px;">[${t('addEvidence')}]</span>
                 </div>
               </div>
+
+              <button class="btn-add-reference" onclick="toggleEvidenceForm('form-${item._id}')" style="width: 100%; margin: 12px 0; padding: 10px 16px; background-color: #3182ce; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 700;">+ ${t('addEvidence')}</button>
 
               <div id="form-${item._id}" class="evidence-form-container" style="display:none;">
                 <div class="evidence-form-group">
