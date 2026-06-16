@@ -304,12 +304,23 @@ async function loadChecklist() {
             `;
           }).join('');
 
+          // Determine evidence status
+          const hasEvidence = item.evidence && item.evidence.length > 0;
+          const statusBadge = hasEvidence
+            ? `<span class="evidence-status completed">✓ Completed</span>`
+            : `<span class="evidence-status pending">○ Pending</span>`;
+
           const evidenceHtml = `
             <div class="evidence-section">
               <div class="evidence-header">
-                <span class="evidence-icon">📋</span>
-                <span>${t('evidence')}</span>
-                <span class="evidence-toggle" onclick="toggleEvidenceForm('form-${item._id}')">[${t('addEvidence')}]</span>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <span class="evidence-icon">📋</span>
+                  <span>${t('evidence')}</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  ${statusBadge}
+                  <span class="evidence-toggle" onclick="toggleEvidenceForm('form-${item._id}')" style="cursor: pointer; color: #3182ce; font-weight: 600; font-size: 12px;">[${t('addEvidence')}]</span>
+                </div>
               </div>
 
               <div id="form-${item._id}" class="evidence-form-container" style="display:none;">
