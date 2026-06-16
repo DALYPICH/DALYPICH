@@ -66,8 +66,8 @@ const translations = {
     removeWorker: 'ដកចេញ',
     view: 'មើល',
     delete: 'លុប',
-    noWorkersAdded: 'មិនមានកម្មករបានលើកឡើងនៅឡើយ',
-    pending: 'ម៉ាក់ឃ្ឍ',
+    noWorkersAdded: 'គ្មានកម្មករដែលបានលើកឡើងនៅឡើយទេ',
+    pending: 'រង់ចាំ',
     completed: '✓ ពេញលេញ',
     inProgress: 'កំពុងដំណើរការ',
     failed: 'បរាជ័យក្នុងការផ្ទុកបញ្ជីពិនិត្យ។ តើម៉ាស៊ីនមេកំពុងដំណើរការឬទេ?'
