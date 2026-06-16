@@ -66,6 +66,10 @@ const translations = {
     removeWorker: 'ដកចេញ',
     view: 'មើល',
     delete: 'លុប',
+    noWorkersAdded: 'មិនមានកម្មករបានលើកឡើងនៅឡើយ',
+    pending: 'ម៉ាក់ឃ្ឍ',
+    completed: '✓ ពេញលេញ',
+    inProgress: 'កំពុងដំណើរការ',
     failed: 'បរាជ័យក្នុងការផ្ទុកបញ្ជីពិនិត្យ។ តើម៉ាស៊ីនមេកំពុងដំណើរការឬទេ?'
   },
   zh: {
@@ -307,8 +311,8 @@ async function loadChecklist() {
           // Determine evidence status
           const hasEvidence = item.evidence && item.evidence.length > 0;
           const statusBadge = hasEvidence
-            ? `<span class="evidence-status completed">✓ Completed</span>`
-            : `<span class="evidence-status pending">○ Pending</span>`;
+            ? `<span class="evidence-status completed">${t('completed')}</span>`
+            : `<span class="evidence-status pending">${t('pending')}</span>`;
 
           const evidenceHtml = `
             <div class="evidence-section">
@@ -357,7 +361,7 @@ async function loadChecklist() {
                     </thead>
                     <tbody id="workers-tbody-${item._id}">
                       <tr class="empty-row">
-                        <td colspan="5" style="text-align: center; color: #95a5a6;">No workers added yet</td>
+                        <td colspan="5" style="text-align: center; color: #95a5a6;">${t('noWorkersAdded')}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -515,7 +519,7 @@ function removeWorkerRow(btn) {
   if (tbody.querySelectorAll('.worker-row').length === 0) {
     const emptyRow = document.createElement('tr');
     emptyRow.className = 'empty-row';
-    emptyRow.innerHTML = `<td colspan="5" style="text-align: center; color: #95a5a6;">No workers added yet</td>`;
+    emptyRow.innerHTML = `<td colspan="5" style="text-align: center; color: #95a5a6;">${t('noWorkersAdded')}</td>`;
     tbody.appendChild(emptyRow);
   }
 }
