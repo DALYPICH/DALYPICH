@@ -335,6 +335,17 @@ async function loadChecklist() {
             ? `<span class="evidence-status completed">${t('completed')}</span>`
             : `<span class="evidence-status pending">${t('pending')}</span>`;
 
+          // Reference documents HTML
+          let refDocHtml = '';
+          if (item.referenceDocuments && item.referenceDocuments.length > 0) {
+            refDocHtml = '<div style="margin: 8px 0; padding: 8px; background-color: #f0f7ff; border-radius: 4px; border-left: 3px solid #3182ce;">';
+            refDocHtml += '<div style="font-size: 12px; font-weight: bold; color: #2c5aa0; margin-bottom: 6px;">📄 Reference Documents:</div>';
+            item.referenceDocuments.forEach((doc, idx) => {
+              refDocHtml += `<div style="font-size: 11px; margin: 4px 0;"><a href="javascript:void(0);" onclick="viewReferenceDoc('${item._id}', ${idx})" style="color: #3182ce; text-decoration: underline; cursor: pointer;">📋 ${doc.title || 'Reference Document'}</a></div>`;
+            });
+            refDocHtml += '</div>';
+          }
+
           const evidenceHtml = `
             <div class="evidence-section">
               <div class="evidence-header">
@@ -346,6 +357,8 @@ async function loadChecklist() {
                   ${statusBadge}
                 </div>
               </div>
+
+              ${refDocHtml}
 
               <button class="btn-add-reference" onclick="toggleEvidenceForm('form-${item._id}')" title="${t('addEvidence')}" style="width: 24px; height: 24px; margin: 0; padding: 0; background-color: #999; color: white; border: none; border-radius: 50%; cursor: pointer; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; position: relative; flex-shrink: 0;" onmouseover="this.style.backgroundColor='#777'; this.style.transform='scale(1.1)'" onmouseout="this.style.backgroundColor='#999'; this.style.transform='scale(1)'">+</button>
 
@@ -454,6 +467,36 @@ function toggleSubsection(subsectionId) {
     toggle.textContent = '▶';
     toggle.style.transform = 'rotate(0deg)';
   }
+}
+
+function viewReferenceDoc(itemId, docIndex) {
+  // Fetch the reference document and display it
+  fetch(`/api/reference-document/${itemId}/${docIndex}`)
+    .then(response => response.json())
+    .then(doc => {
+      // Create a modal to display the document
+      const modal = document.createElement('div');
+      modal.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 10000;';
+      modal.innerHTML = `
+        <div style="background: white; border-radius: 8px; max-width: 90%; max-height: 90%; overflow: auto; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid #e2e8f0; padding-bottom: 12px;">
+            <h2 style="margin: 0; font-size: 18px; color: #2d3748;">${doc.title || 'Reference Document'}</h2>
+            <button onclick="this.closest('[style*=\"position: fixed\"]').remove()" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #718096;">×</button>
+          </div>
+          <div style="font-size: 12px; color: #4a5568; white-space: pre-wrap; font-family: monospace; line-height: 1.6;">
+            ${doc.content || doc.text || 'Document content not available'}
+          </div>
+          <div style="margin-top: 16px; text-align: right;">
+            <button onclick="this.closest('[style*=\"position: fixed\"]').remove()" style="padding: 8px 16px; background-color: #4299e1; color: white; border: none; border-radius: 4px; cursor: pointer;">Close</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(modal);
+    })
+    .catch(err => {
+      console.error('Error loading reference document:', err);
+      alert('Could not load reference document');
+    });
 }
 
 function toggleEvidenceForm(formId) {
