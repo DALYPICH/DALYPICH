@@ -140,5 +140,169 @@ module.exports = {
   'wages': {
     km: 'ប្រាក់ឈ្នួល',
     zh: '工资'
+  },
+
+  // Complete sentence translations for legal references
+  'This Law shall apply to all workers and employers in Cambodia': {
+    km: 'ច្បាប់នេះក្នុងការងារក្រុមការងារ និងម្ចាស់ការងារក្នុងកម្ពុជា',
+    zh: '本法适用于柬埔寨的所有员工和雇主'
+  },
+  'Good labour standards require transparent processes': {
+    km: 'ស្ដង់ដារលទ្ធផលល្អក្នុងការងារតម្រូវឱ្យមានដំណើរការថ្លាសាធារណ',
+    zh: '良好的劳动标准需要透明的过程'
+  },
+  'Fundamental labour rights must be respected': {
+    km: 'សិទ្ធិមូលដ្ឋាននៃការងារត្រូវតែរក្សាយោង',
+    zh: '必须尊重基本劳动权利'
+  },
+  'Assessment and monitoring are essential for compliance': {
+    km: 'ការវាយតម្លៃ និងការតាមដានគឺចាំបាច់សម្រាប់ការអនុលោមតាម',
+    zh: '评估和监测对于合规至关重要'
+  },
+
+  // Legal Reference key phrases
+  'Cambodia Labour Law': {
+    km: 'ច្បាប់ក្នុងការងារនៃកម្ពុជា',
+    zh: '柬埔寨劳动法'
+  },
+  'Article': {
+    km: 'អត្ថបទ',
+    zh: '第'
+  },
+  'employer': {
+    km: 'ម្ចាស់ការងារ',
+    zh: '雇主'
+  },
+  'transparent': {
+    km: 'ថ្លាសាធារណ',
+    zh: '透明'
+  },
+  'fundamental': {
+    km: 'មូលដ្ឋាន',
+    zh: '基本'
+  },
+  'rights': {
+    km: 'សិទ្ធិ',
+    zh: '权利'
+  },
+  'respected': {
+    km: 'ប្រកាន់ឡើង',
+    zh: '尊重'
+  },
+  'must': {
+    km: 'ត្រូវតែ',
+    zh: '必须'
+  },
+  'assessment': {
+    km: 'ការវាយតម្លៃ',
+    zh: '评估'
+  },
+  'monitoring': {
+    km: 'ការតាមដាន',
+    zh: '监测'
+  },
+  'essential': {
+    km: 'ចាំបាច់',
+    zh: '必要'
+  },
+  'compliance': {
+    km: 'ការអនុលោម',
+    zh: '合规'
+  },
+
+  // Complete CAT findings translations
+  'Good practices and key strengths were not identified and documented.': {
+    km: 'ការងារល្អ និងចំណាប់ដឹងលម្អិតមិនបានកំណត់ និងឯកសារលម្អិតទេ។',
+    zh: '最佳做法和关键优势未被识别和记录。'
+  },
+  'The assessor\'s access to the enterprise was unreasonably restricted.': {
+    km: 'ការទទួលបាននៃលទ្ធភាពអ្នកវាយតម្លៃដល់ស្ថាប័នក្រុមហ៊ុនបានកំណត់ដោយមិនសមហេតុផល។',
+    zh: '评估人员对企业的访问受到不合理限制。'
+  },
+  'Documents were not provided in a timely manner.': {
+    km: 'ឯកសារលម្អិតមិនបានផ្តល់ឱ្យក្នុងពេលវេលាសមស្របទេ។',
+    zh: '文件没有及时提供。'
+  },
+  'Insufficient assessment visits prior to STAR Cycle 1.': {
+    km: 'ការដើរលេងវាយតម្លៃមិនគ្រប់គ្រាន់មុនពេល STAR Cycle 1 ។',
+    zh: '在STAR周期1之前的评估访问不足。'
+  },
+  'Good practices and key strengths were identified and documented.': {
+    km: 'ការងារល្អ និងចំណាប់ដឹងលម្អិតបានកំណត់ និងឯកសារលម្អិត។',
+    zh: '最佳做法和关键优势已被识别和记录。'
+  },
+  'The assessor\'s access to the enterprise was not restricted.': {
+    km: 'ការទទួលបាននៃលទ្ធភាពអ្នកវាយតម្លៃដល់ស្ថាប័នក្រុមហ៊ុនមិនបានកំណត់។',
+    zh: '评估人员对企业的访问未受限制。'
+  },
+  'Documents were provided in a timely manner.': {
+    km: 'ឯកសារលម្អិតបានផ្តល់ឱ្យក្នុងពេលវេលាសមស្របដែរ។',
+    zh: '文件及时提供。'
+  },
+  'Sufficient assessment visits prior to STAR Cycle 1.': {
+    km: 'ការដើរលេងវាយតម្លៃគ្រប់គ្រាន់មុនពេល STAR Cycle 1 ។',
+    zh: '在STAR周期1之前的评估访问充足。'
+  },
+
+  // CAT findings key phrases
+  'Good practices': {
+    km: 'ការងារល្អ',
+    zh: '最佳做法'
+  },
+  'strengths': {
+    km: 'ចំណាប់ដឹងលម្អិត',
+    zh: '优势'
+  },
+  'identified': {
+    km: 'កំណត់',
+    zh: '识别'
+  },
+  'not identified': {
+    km: 'មិនបានកំណត់',
+    zh: '未被识别'
+  },
+  'assessor': {
+    km: 'អ្នកវាយតម្លៃ',
+    zh: '评估师'
+  },
+  'access': {
+    km: 'ការទទួលបាន',
+    zh: '访问'
+  },
+  'enterprise': {
+    km: 'ស្ថាប័ន',
+    zh: '企业'
+  },
+  'unreasonably': {
+    km: 'ដោយមិនសមហេតុផល',
+    zh: '无理由地'
+  },
+  'restricted': {
+    km: 'កំណត់',
+    zh: '限制'
+  },
+  'timely': {
+    km: 'សមស្របក្នុងពេលវេលា',
+    zh: '及时'
+  },
+  'provided': {
+    km: 'ផ្តល់ឱ្យ',
+    zh: '提供'
+  },
+  'insufficient': {
+    km: 'មិនគ្រប់គ្រាន់',
+    zh: '不足'
+  },
+  'visits': {
+    km: 'ការដើរលេង',
+    zh: '访问'
+  },
+  'prior': {
+    km: 'មុនពេល',
+    zh: '之前'
+  },
+  'CAT': {
+    km: 'CAT',
+    zh: 'CAT'
   }
 };

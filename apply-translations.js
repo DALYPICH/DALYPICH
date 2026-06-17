@@ -31,26 +31,22 @@ async function applyTranslations() {
     console.log(`Processing ${items.length} items...\n`);
 
     let updateCount = 0;
-    const fieldsToTranslate = ['question', 'commonProblems', 'advice', 'reminder'];
+    const fieldsToTranslate = ['question', 'commonProblems', 'advice', 'reminder', 'legalReference', 'compliancePoint'];
 
     for (const item of items) {
       const kmTranslations = {
         section: item.section || '',
         subsection: item.subsection || '',
         category: item.category || '',
-        legalReference: item.legalReference || '',
-        compliancePoint: item.compliancePoint || '',
       };
 
       const zhTranslations = {
         section: item.section || '',
         subsection: item.subsection || '',
         category: item.category || '',
-        legalReference: item.legalReference || '',
-        compliancePoint: item.compliancePoint || '',
       };
 
-      // Translate content fields
+      // Translate ALL content fields including legal references and CAT findings
       for (const field of fieldsToTranslate) {
         const text = item[field] || '';
         kmTranslations[field] = translateText(text, 'km') || text;
