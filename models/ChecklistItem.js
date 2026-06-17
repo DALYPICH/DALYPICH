@@ -56,6 +56,12 @@ const checklistItemSchema = new mongoose.Schema({
     workers: { type: String, default: '' },
     uploadedAt: { type: Date, default: Date.now },
     uploadedBy: { type: String, default: 'User' }
+  }],
+  referenceDocuments: [{
+    title: { type: String, default: '' },
+    type: { type: String, default: 'Company Policy' },
+    content: { type: String, default: '' },
+    createdAt: { type: Date, default: Date.now }
   }]
 }, { timestamps: true });
 
