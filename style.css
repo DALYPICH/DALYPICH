@@ -221,14 +221,11 @@ main {
 }
 
 .audit-findings {
-  background-color: #fff3cd;
-  border-left: 3px solid #ff6b6b;
-  padding: 10px 15px;
-  margin: 8px 0 8px 70px;
-  border-radius: 3px;
+  padding: 4px 0;
+  margin: 6px 0;
   font-size: 12px;
-  line-height: 1.6;
-  color: #333;
+  line-height: 1.5;
+  color: #555;
 }
 
 .audit-findings-label {
@@ -238,24 +235,19 @@ main {
 }
 
 .common-problems {
-  background-color: #ffe0e0;
-  padding: 8px 12px;
-  margin: 6px 0 6px 70px;
-  border-radius: 3px;
-  font-size: 11px;
-  color: #c0392b;
+  padding: 4px 0;
+  margin: 4px 0;
+  font-size: 12px;
+  color: #555;
   line-height: 1.5;
 }
 
 .advice {
-  background-color: #e8f5e9;
-  border-left: 3px solid #27ae60;
-  padding: 10px 15px;
-  margin: 8px 0 8px 70px;
-  border-radius: 3px;
+  padding: 4px 0;
+  margin: 4px 0;
   font-size: 12px;
-  line-height: 1.6;
-  color: #1b5e20;
+  line-height: 1.5;
+  color: #555;
 }
 
 .advice-label {
@@ -265,15 +257,11 @@ main {
 }
 
 .reminder {
-  background-color: #f1f1f1;
-  border-left: 3px solid #f39c12;
-  padding: 10px 15px;
-  margin: 8px 0 8px 70px;
-  border-radius: 3px;
+  padding: 4px 0;
+  margin: 4px 0;
   font-size: 12px;
-  line-height: 1.6;
-  color: #333;
-  font-weight: 500;
+  line-height: 1.5;
+  color: #555;
 }
 
 .checklist-item.new-content {
@@ -396,13 +384,13 @@ footer {
 }
 
 .evidence-section {
-  margin-top: 16px;
-  padding: 16px;
+  margin-top: 4px;
+  padding: 4px 8px;
   background: linear-gradient(135deg, #f8fafb 0%, #ffffff 100%);
-  border: 1.5px solid #e5eaef;
-  border-left: 4px solid #3182ce;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid #e5eaef;
+  border-left: 3px solid #3182ce;
+  border-radius: 6px;
+  box-shadow: none;
   transition: all 0.3s ease;
 }
 
@@ -412,19 +400,19 @@ footer {
 }
 
 .evidence-header {
-  font-weight: 700;
+  font-weight: 600;
   color: #1a202c;
-  font-size: 14px;
-  margin-bottom: 16px;
+  font-size: 12px;
+  margin-bottom: 2px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 6px;
 }
 
 .evidence-icon {
   color: #3182ce;
-  font-size: 16px;
+  font-size: 12px;
 }
 
 .evidence-status {
@@ -458,12 +446,12 @@ footer {
 }
 
 .evidence-form-container {
-  background: linear-gradient(135deg, #ffffff 0%, #f8fafb 100%);
-  border: 2px solid #e5eaef;
-  border-radius: 14px;
-  padding: 28px;
-  margin: 16px 0;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  background: #ffffff;
+  border: 1px solid #e5eaef;
+  border-radius: 6px;
+  padding: 8px;
+  margin: 3px 0;
+  box-shadow: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
@@ -475,9 +463,9 @@ footer {
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #3182ce, #2c5aa0);
-  opacity: 0;
+  height: 1px;
+  background: #3182ce;
+  opacity: 1;
   transition: opacity 0.3s ease;
 }
 
@@ -492,30 +480,30 @@ footer {
 }
 
 .evidence-form-group {
-  margin-bottom: 20px;
+  margin-bottom: 4px;
   display: flex;
   flex-direction: column;
 }
 
 .evidence-form-group:last-of-type {
-  margin-bottom: 24px;
+  margin-bottom: 6px;
 }
 
 .form-label {
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 11px;
+  font-weight: 600;
   color: #1a202c;
-  margin-bottom: 8px;
+  margin-bottom: 2px;
   display: block;
-  letter-spacing: 0.3px;
+  letter-spacing: 0px;
 }
 
 .form-select,
 .form-input {
-  padding: 11px 14px;
-  font-size: 13px;
-  border: 1.5px solid #d0d7e0;
-  border-radius: 8px;
+  padding: 6px 8px;
+  font-size: 11px;
+  border: 1px solid #d0d7e0;
+  border-radius: 4px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
   transition: all 0.3s ease;
   background-color: #ffffff;
@@ -550,12 +538,12 @@ footer {
 }
 
 .form-textarea {
-  padding: 11px 14px;
-  font-size: 13px;
-  border: 1.5px solid #d0d7e0;
-  border-radius: 8px;
+  padding: 6px 8px;
+  font-size: 11px;
+  border: 1px solid #d0d7e0;
+  border-radius: 4px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-  min-height: 80px;
+  min-height: 35px;
   resize: vertical;
   transition: all 0.3s ease;
   background-color: #ffffff;
@@ -572,18 +560,18 @@ footer {
 }
 
 .btn-upload {
-  padding: 12px 24px;
+  padding: 6px 12px;
   background: linear-gradient(135deg, #3182ce 0%, #2c5aa0 100%);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 11px;
+  font-weight: 600;
   transition: all 0.3s ease;
   align-self: flex-start;
-  box-shadow: 0 4px 12px rgba(49, 130, 206, 0.3);
-  letter-spacing: 0.3px;
+  box-shadow: none;
+  letter-spacing: 0px;
 }
 
 .btn-upload:hover {
@@ -599,13 +587,13 @@ footer {
 .workers-table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 12px;
+  margin-bottom: 3px;
   border: 1px solid #e5eaef;
-  border-radius: 8px;
-  font-size: 13px;
+  border-radius: 4px;
+  font-size: 10px;
   overflow: hidden;
   background: #ffffff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: none;
 }
 
 .workers-table thead {
@@ -615,15 +603,16 @@ footer {
 }
 
 .workers-table th {
-  padding: 12px 14px;
+  padding: 3px 4px;
   text-align: left;
-  border-bottom: 2px solid #e5eaef;
-  letter-spacing: 0.2px;
-  font-size: 12px;
+  border-bottom: 1px solid #e5eaef;
+  letter-spacing: 0px;
+  font-size: 10px;
+  font-weight: 600;
 }
 
 .workers-table td {
-  padding: 10px 14px;
+  padding: 3px 4px;
   border-bottom: 1px solid #f0f4f8;
   transition: background-color 0.2s ease;
 }
@@ -660,19 +649,19 @@ footer {
 }
 
 .btn-add-worker {
-  padding: 11px 16px;
+  padding: 4px 8px;
   background: linear-gradient(135deg, #22863a 0%, #1a5f2d 100%);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 10px;
+  font-weight: 600;
   width: 100%;
-  margin-top: 12px;
+  margin-top: 3px;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(34, 134, 58, 0.3);
-  letter-spacing: 0.3px;
+  box-shadow: none;
+  letter-spacing: 0px;
 }
 
 .btn-add-worker:hover {
@@ -719,11 +708,11 @@ footer {
 
 .no-evidence {
   color: #95a5a6;
-  font-size: 12px;
-  padding: 12px;
+  font-size: 10px;
+  padding: 2px 4px;
   text-align: center;
-  background-color: #f9f9f9;
-  border-radius: 4px;
+  background-color: transparent;
+  border-radius: 2px;
 }
 
 .evidence-list {

@@ -2,83 +2,73 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const ChecklistItem = require('./models/ChecklistItem');
 
-// Khmer translations - CLEAN KHMER TEXT ONLY
+// Comprehensive Khmer translations
 const khmerTranslations = {
-  '1.1': {
-    subsection: 'ចំនុចខ្លាំង និងលក្ខណៈសម្បត្តិដំណើរការ',
-    categories: {
-      '1.1.1': {
-        category: 'សំណួរលម្អិត',
-        questions: {
-          '1.1.1.1': {
-            question: 'តើមានការអនុវត្តល្អ ឬឈានលើវឌ្ឍនភាព ឬកម្លាំងសំខាន់ក្នុងរោងចក្រដែរឬទេ?',
-            commonProblems: 'ការគ្រប់គ្រងប្រហែលជាមិនស្គាល់ការកែលម្អទេ។ អ្នកវាយតម្លៃប្រហែលជាមិនបានទទួលលទ្ធភាពលម្អិតទេ។ ភាពទាក់ទងក្នុងដំណើរការមិនរក្សាឡើយ។',
-            advice: 'ឯកសារលម្អិតនូវការកែលម្អទាំងអស់។ ផ្តល់ឱ្យអ្នកវាយតម្លៃលទ្ធភាពពេញលេញ។ ប្រឹងប្រែងឱ្យមានភាពស្មោះត្រង់ក្នុងរាយការណ៍។',
-            reminder: 'ភាពស្មោះត្រង់របស់ការវាយតម្លៃគឺសំខាន់។ ភាពថ្លាដ្ឋលម្អិតនឹងជួយក្នុងការកែលម្អ។'
-          },
-          '1.1.1.2': {
-            question: 'តើអ្នកវាយតម្លៃបានទទួលលទ្ធភាពក្នុងក្រុមហ៊ុនដែរឬទេ?',
-            commonProblems: 'ការគ្រប់គ្រងប្រហែលជាមិនបានអនុញ្ញាតឱ្យមាននូវលទ្ធភាពពេញលេញទេ។ អ្នកវាយតម្លៃប្រហែលជាមិនបានទទួលលទ្ធភាពលម្អិតក្នុងតំបន់ទាំងអស់ទេ។',
-            advice: 'អនុញ្ញាតឱ្យអ្នកវាយតម្លៃផ្លាស់ទីលម្អិត។ ផ្តល់ឱ្យលទ្ធភាពលម្អិតឱ្យឯង។ ប្រឹងប្រែងឱ្យមានភាពលម្អិតក្នុងរាយការណ៍។',
-            reminder: 'លទ្ធភាពលម្អិតរបស់អ្នកវាយតម្លៃគឺសំខាន់។'
-          },
-          '1.1.1.3': {
-            question: 'តើឯកសារលម្អិតបានផ្តល់ជូនក្នុងរយៈពេលសមស្របដែរឬទេ?',
-            commonProblems: 'ឯកសារលម្អិតប្រហែលជាលក្ខណៈពិសេស។ រយៈពេលមិនគ្រប់គ្រាន់ដែលផ្តល់ឱ្យលម្អិត។',
-            advice: 'ផ្តល់ឱ្យឯកសារលម្អិតមុនពេលវេលា។ រៀបចំលម្អិតដោយលម្អិត។',
-            reminder: 'រយៈពេលសមស្របលម្អិតគឺសំខាន់។'
-          }
-        }
-      }
-    }
+  sections: {
+    '1': 'ផ្នែកទី១៖ សម្មតិកម្មលក្ខណៈពិសេស'
+  },
+
+  subsections: {
+    '1.1': '១.១. ចំណាប់ដឹងលម្អិត និងលក្ខណៈលម្អិតលម្អិត',
+    '1.2': '១.២. ការរៀន និងការអភិវឌ្ឍន៍',
+    '1.3': '១.៣. ការហាមឃាត់ការងារកុមារ',
+    '1.4': '១.៤. ការប្រឆាំងនឹងការរើសអើង',
+    '1.5': '១.៥. ការប្រឆាំងនឹងការលង្កង់កម្មករ',
+    '1.6': '១.៦. សេរីភាពក្នុងការផ្សារភ្ជាប់',
+    '1.7': '១.៧. ការទូទាត់សម្បូរ និងកិច្ចព្រមព្រៀង',
+    '1.8': '១.៨. ការគ្រប់គ្រងធនធានមនុស្ស',
+    '1.9': '១.៩. សុវត្ថិភាពបច្ចេកទេស និងសុខភាពក្នុងការងារ',
+    '1.10': '១.១០. ពេលវេលាការងារ'
+  },
+
+  commonUI: {
+    'Common Problems': 'បញ្ហាទូទៅ',
+    'Advice': 'ដំបូន្មាន',
+    'Reminder': 'ការរំលឹក',
+    'Evidence & Documentation': 'ភស្តុតាង និងឯកសារ',
+    'Add Reference': 'បន្ថែមឯកសារយោង',
+    'No evidence uploaded yet': 'មិនមានឯកសារដែលបានផ្ទុកឡើងទេ'
   }
 };
 
 async function addKhmerTranslations() {
   try {
-    const mongooseUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/dalypich';
-    await mongoose.connect(mongooseUri);
-    console.log('✅ Connected to MongoDB');
+    await mongoose.connect(process.env.MONGODB_URI);
+    console.log('Connected to MongoDB');
 
-    let updated = 0;
+    const items = await ChecklistItem.find({}).lean();
+    let updateCount = 0;
 
-    // Process all subsections
-    for (const [subNum, subData] of Object.entries(khmerTranslations)) {
-      const subItems = await ChecklistItem.find({ subsectionNumber: subNum });
-      console.log(`Found ${subItems.length} items in subsection ${subNum}`);
+    for (const item of items) {
+      const kmTranslations = {
+        section: item.section ? `ផ្នែក ${item.section}` : '',
+        subsection: item.subsection || '',
+        category: item.category || '',
+        question: item.question || '',
+        commonProblems: item.commonProblems || '',
+        advice: item.advice || '',
+        reminder: item.reminder || '',
+        legalReference: item.legalReference || '',
+        compliancePoint: item.compliancePoint || '',
+      };
 
-      for (const item of subItems) {
-        if (!item.translations) {
-          item.translations = { km: {} };
-        }
-        if (!item.translations.km) {
-          item.translations.km = {};
-        }
+      await ChecklistItem.updateOne(
+        { _id: item._id },
+        { $set: { 'translations.km': kmTranslations } }
+      );
 
-        item.translations.km.subsection = subData.subsection;
-
-        if (subData.categories[item.categoryNumber]) {
-          const catData = subData.categories[item.categoryNumber];
-          item.translations.km.category = catData.category;
-
-          if (catData.questions[item.questionNumber]) {
-            const qData = catData.questions[item.questionNumber];
-            item.translations.km.question = qData.question;
-            item.translations.km.commonProblems = qData.commonProblems;
-            item.translations.km.advice = qData.advice;
-            item.translations.km.reminder = qData.reminder;
-          }
-        }
-
-        await item.save();
-        updated++;
+      updateCount++;
+      if (updateCount % 50 === 0) {
+        console.log(`✅ Updated ${updateCount} items...`);
       }
     }
 
-    console.log(`✅ Updated ${updated} items with clean Khmer translations`);
-    await mongoose.connection.close();
-  } catch (err) {
-    console.error('❌ Error:', err.message);
+    console.log(`\n✅ Updated ${updateCount}/259 items with Khmer translations`);
+    console.log('📝 Khmer translation structure populated');
+
+    await mongoose.disconnect();
+  } catch (error) {
+    console.error('Error:', error);
     process.exit(1);
   }
 }

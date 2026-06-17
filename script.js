@@ -153,6 +153,16 @@ function updatePageText() {
   document.querySelector('footer p').textContent = `© 2026 YAIKH.COM. All rights reserved.`;
 }
 
+// Helper function to style colored markup (BLUE for BFC items, red for MISSING content)
+function formatColoredText(text) {
+  if (!text) return text;
+  // Replace **BLUE: [text]** with <span style="color: #0066cc">[styled text]</span>
+  text = text.replace(/\*\*BLUE:\s*\[(.*?)\]\*\*/g, '<span style="color: #0066cc; font-weight: bold;">■ $1</span>');
+  // Replace *MISSING: [text]* with <span style="color: #cc0000">[styled text]</span>
+  text = text.replace(/\*MISSING:\s*(.*?)\*(?!\*)/g, '<span style="color: #cc0000; font-weight: bold;">⚠ $1</span>');
+  return text;
+}
+
 // Set initial language
 document.addEventListener('DOMContentLoaded', () => {
   updatePageText();
@@ -172,6 +182,14 @@ async function loadChecklist() {
       container.innerHTML = `<div class="loading">${t('noItems')}</div>`;
       return;
     }
+
+    // Update progress based on evidence uploaded
+    items.forEach(item => {
+      const evidenceCount = (item.evidence || []).length;
+      item.progress = evidenceCount > 0 ? 100 : 0;
+      item.completed = evidenceCount;
+      item.total = evidenceCount > 0 ? evidenceCount : 1;
+    });
 
     const totalCompleted = items.filter(i => i.progress === 100).length;
     const totalItems = items.length;
@@ -235,15 +253,18 @@ async function loadChecklist() {
 
         html += '<div class="checklist-items">';
         cat.items.forEach(item => {
-          const isComplete = item.progress === 100;
+          // Calculate progress based on evidence uploaded
+          const evidenceCount = (item.evidence || []).length;
+          const progress = evidenceCount > 0 ? 100 : 0;
+          const isComplete = progress === 100;
           const statusClass = isComplete ? 'complete' : 'incomplete';
-          const statusText = `${item.progress}% (${item.completed}/${item.total})`;
+          const statusText = `${progress}% (${evidenceCount}/${evidenceCount > 0 ? evidenceCount : 1})`;
 
           const legalHtml = getTranslated(item, 'legalReference')
-            ? `<div class="legal-reference">${getTranslated(item, 'legalReference')}</div>`
+            ? `<div class="legal-reference">${formatColoredText(getTranslated(item, 'legalReference'))}</div>`
             : '';
           const complianceHtml = getTranslated(item, 'compliancePoint')
-            ? `<div class="compliance-point">${getTranslated(item, 'compliancePoint')}</div>`
+            ? `<div class="compliance-point">${formatColoredText(getTranslated(item, 'compliancePoint'))}</div>`
             : '';
           const auditHtml = getTranslated(item, 'auditFindings')
             ? `<div class="audit-findings"><div class="audit-findings-label">🔍 ${t('auditFindingsLabel')}</div>${getTranslated(item, 'auditFindings')}</div>`
@@ -326,7 +347,7 @@ async function loadChecklist() {
                 </div>
               </div>
 
-              <button class="btn-add-reference" onclick="toggleEvidenceForm('form-${item._id}')" style="width: 100%; margin: 12px 0; padding: 10px 16px; background-color: #3182ce; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 700;">+ ${t('addEvidence')}</button>
+              <button class="btn-add-reference" onclick="toggleEvidenceForm('form-${item._id}')" title="${t('addEvidence')}" style="width: 24px; height: 24px; margin: 0; padding: 0; background-color: #999; color: white; border: none; border-radius: 50%; cursor: pointer; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; position: relative; flex-shrink: 0;" onmouseover="this.style.backgroundColor='#777'; this.style.transform='scale(1.1)'" onmouseout="this.style.backgroundColor='#999'; this.style.transform='scale(1)'">+</button>
 
               <div id="form-${item._id}" class="evidence-form-container" style="display:none;">
                 <div class="evidence-form-group">

@@ -54,7 +54,23 @@
       "Bash(node fix-all-mixed-translations.js)",
       "Bash(node final-complete-translations.js)",
       "Bash(node translate-audit-findings.js)",
-      "Bash(node remove-yorkmars.js)"
+      "Bash(node remove-yorkmars.js)",
+      "Bash(Get-ChildItem -Path \"D:\\\\DALY_Project\\\\New Project\" -Recurse -Type File -Name)",
+      "Bash(Select-Object -First 50)",
+      "Bash(find /d/DALY_Project -type f -name \"*.json\" -o -name \"*.ts\" -o -name \"*.tsx\" -o -name \"*.md\" | head -30)",
+      "Bash(cd \"/d/DALY_Project/New Project\" && grep -n \"subsection:\" seeds/iloChecklist.js | head -40)",
+      "Bash(cd \"/d/DALY_Project/New Project\" && ls -lh BFC_*.* | tail -10)",
+      "Bash(awk '/^const legalReferences = {/,/^};/' seeds/iloChecklist.js)",
+      "Bash(awk '/^const compliancePoints = {/,/^};/' seeds/iloChecklist.js)",
+      "Bash(awk '/^const iloQuestions = \\\\[/,/^\\\\];/' seeds/iloChecklist.js)",
+      "Bash(node add-advice-reminders.js)",
+      "Bash(node enrich-all-advice.js)",
+      "Bash(node add-missing-advice.js)",
+      "Bash(node add-cambodia-law-references.js)",
+      "Bash(node add-all-law-references.js)",
+      "Bash(node populate-all-translations.js)",
+      "Bash(npm list *)",
+      "Bash(node apply-translations.js)"
     ]
   }
 }
